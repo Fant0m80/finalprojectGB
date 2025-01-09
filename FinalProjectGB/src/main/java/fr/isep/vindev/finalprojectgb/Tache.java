@@ -5,11 +5,41 @@ import java.util.Date;
 
 public class Tache {
     private String nomTache;
+    private Projet projet;
     private Date deadline;
     private String categorie;
     private int priorite;
     private String description;
     private ArrayList listeMembres = new ArrayList<Employe>();
+
+    public Tache(String nomTache, Projet projet, Date deadline, String categorie, int priorite, String description) {
+        this.nomTache = nomTache;
+        this.projet = projet;
+        this.deadline = deadline;
+        this.categorie = categorie;
+        this.priorite = priorite;
+        this.description = description;
+    }
+
+    public void setNomTache(String nomTache) {
+        this.nomTache = nomTache;
+    }
+
+    public void setDeadline(Date deadline) {
+        this.deadline = deadline;
+    }
+
+    public void setCategorie(String categorie) {
+        this.categorie = categorie;
+    }
+
+    public void setPriorite(int priorite) {
+        this.priorite = priorite;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
     public String getNomTache() {
         return nomTache;
@@ -33,5 +63,21 @@ public class Tache {
 
     public ArrayList getListeMembres() {
         return listeMembres;
+    }
+
+    public void ajouterMembre(Employe employe) {
+        for (int i = 0; i < this.projet.getListeDesMembres().size(); i++) {
+            if (this.projet.getListeDesMembres().get(i).equals(employe)) {
+                this.listeMembres.add(employe);
+            }
+        }
+    }
+
+    public void supprimerMembre(Employe employe) {
+        for (int i = 0; i < this.listeMembres.size(); i++) {
+            if (this.listeMembres.get(i).equals(employe)) {
+                this.listeMembres.remove(employe);
+            }
+        }
     }
 }
