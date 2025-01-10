@@ -1,16 +1,19 @@
 package fr.isep.vindev.finalprojectgb;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 
 public class Projet {
     private String nomDuProjet;
-    private Date deadline;
+    private LocalDate deadline;
     private ArrayList listeDesMembres = new ArrayList<Employe>();
     private ArrayList listeDesTaches = new ArrayList<Tache>();
     private double budget;
 
-    public Projet(String nomDuProjet, Date deadline, double budget) {
+    public ArrayList tousLesProjets = new ArrayList<Projet>();
+
+    public Projet(String nomDuProjet, LocalDate deadline, double budget) {
         this.nomDuProjet = nomDuProjet;
         this.deadline = deadline;
         this.budget = budget;
@@ -48,7 +51,7 @@ public class Projet {
         this.nomDuProjet = nomDuProjet;
     }
 
-    public void setDeadline(Date deadline) {
+    public void setDeadline(LocalDate deadline) {
         this.deadline = deadline;
     }
 
@@ -60,7 +63,7 @@ public class Projet {
         return nomDuProjet;
     }
 
-    public Date getDeadline() {
+    public LocalDate getDeadline() {
         return deadline;
     }
 
