@@ -13,6 +13,8 @@ public class Employe {
     private String[] role = new String[2];
     private ArrayList historique = new ArrayList<Projet>();
 
+    public ArrayList tousLesEmployes = new ArrayList<Employe>();
+
     public Employe(String nom, String prenom, String email, int telephone) {
         this.id = UUID.randomUUID();
         this.nom = nom;

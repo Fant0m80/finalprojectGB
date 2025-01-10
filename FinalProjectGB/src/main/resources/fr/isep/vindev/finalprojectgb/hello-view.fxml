@@ -7,5 +7,6 @@
    <children>
       <Button fx:id="Button_Projet" mnemonicParsing="false" onAction="#onButton_ProjetClick" text="Projet" />
       <Button fx:id="Button_Employe" mnemonicParsing="false" onAction="#onButton_EmployeClick" text="Employe" />
+      <ChoiceBox prefWidth="150.0" />
    </children>
 </VBox>
