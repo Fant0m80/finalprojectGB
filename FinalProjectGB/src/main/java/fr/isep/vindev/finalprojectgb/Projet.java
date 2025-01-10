@@ -11,7 +11,7 @@ public class Projet {
     private ArrayList listeDesTaches = new ArrayList<Tache>();
     private double budget;
 
-    public ArrayList tousLesProjets = new ArrayList<Projet>();
+    public static ArrayList<Projet> tousLesProjets = new ArrayList<Projet>();
 
     public Projet(String nomDuProjet, LocalDate deadline, double budget) {
         this.nomDuProjet = nomDuProjet;

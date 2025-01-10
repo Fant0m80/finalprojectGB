@@ -25,6 +25,6 @@ public class NewProjetController {
     protected void onButton_CreationProjetClick() throws IOException {
 
         Projet newProjet = new Projet(TextField_NomProjet.getText(),LocalDate_Deadline.getValue(), Double.parseDouble(TextField_BudgetProjet.getText()));
-        //tousLesProjets.add(newProjet);
+        Projet.tousLesProjets.add(newProjet);
     }
 }

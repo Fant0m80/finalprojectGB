@@ -10,13 +10,13 @@
             <HBox prefHeight="100.0" prefWidth="200.0" />
             <HBox prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <ChoiceBox fx:id="ChoiceBox_Projet" prefWidth="150.0" />
+                  <ChoiceBox fx:id="ChoiceBox_Projet" onMouseClicked="#onChoiceBox_ProjetClick" prefWidth="150.0" />
                   <Button fx:id="Button_Projet" mnemonicParsing="false" onAction="#onButton_ProjetClick" text="Projet" />
                </children>
             </HBox>
             <HBox prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <ChoiceBox fx:id="ChoiceBox_Employe" prefWidth="150.0" onMouseClicked="#onChoiceBox_EmployeClick"/>
+                  <ChoiceBox fx:id="ChoiceBox_Employe" onMouseClicked="#onChoiceBox_EmployeClick" prefWidth="150.0" />
                   <Button fx:id="Button_Employe" mnemonicParsing="false" onAction="#onButton_EmployeClick" text="Employe" />
                </children>
             </HBox>

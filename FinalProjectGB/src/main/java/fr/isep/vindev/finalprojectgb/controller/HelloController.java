@@ -2,6 +2,7 @@ package fr.isep.vindev.finalprojectgb.controller;
 
 import fr.isep.vindev.finalprojectgb.Employe;
 import fr.isep.vindev.finalprojectgb.HelloApplication;
+import fr.isep.vindev.finalprojectgb.Projet;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -23,6 +24,9 @@ public class HelloController {
 
     @FXML
     private ChoiceBox ChoiceBox_Employe;
+
+    @FXML
+    private ChoiceBox ChoiceBox_Projet;
 
     @FXML
     protected void onButton_ProjetClick() throws IOException {
@@ -76,6 +80,13 @@ public class HelloController {
         ChoiceBox_Employe.getItems().clear();
         for (int i = 0; i< Employe.tousLesEmployes.size(); i++ ){
             ChoiceBox_Employe.getItems().add(Employe.tousLesEmployes.get(i).getNom());
+        }
+    }
+    @FXML
+    protected void onChoiceBox_ProjetClick() throws IOException {
+        ChoiceBox_Projet.getItems().clear();
+        for (int i = 0; i< Projet.tousLesProjets.size(); i++ ){
+            ChoiceBox_Projet.getItems().add(Projet.tousLesProjets.get(i).getNomDuProjet());
         }
     }
 
