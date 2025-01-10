@@ -7,4 +7,6 @@ module fr.isep.vindev.finalprojectgb {
 
     opens fr.isep.vindev.finalprojectgb to javafx.fxml;
     exports fr.isep.vindev.finalprojectgb;
+    exports fr.isep.vindev.finalprojectgb.controller;
+    opens fr.isep.vindev.finalprojectgb.controller to javafx.fxml;
 }

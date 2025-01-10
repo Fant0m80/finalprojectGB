@@ -1,15 +1,12 @@
-package fr.isep.vindev.finalprojectgb;
+package fr.isep.vindev.finalprojectgb.controller;
 
+import fr.isep.vindev.finalprojectgb.Projet;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.time.LocalDate;
 
 public class NewProjetController {
     @FXML
@@ -28,6 +25,6 @@ public class NewProjetController {
     protected void onButton_CreationProjetClick() throws IOException {
 
         Projet newProjet = new Projet(TextField_NomProjet.getText(),LocalDate_Deadline.getValue(), Double.parseDouble(TextField_BudgetProjet.getText()));
-        tousLesProjets.add(newProjet);
+        //tousLesProjets.add(newProjet);
     }
 }
