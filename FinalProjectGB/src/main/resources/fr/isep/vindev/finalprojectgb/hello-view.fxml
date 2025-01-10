@@ -5,8 +5,24 @@
 
 <VBox alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.isep.vindev.finalprojectgb.HelloController">
    <children>
-      <Button fx:id="Button_Projet" mnemonicParsing="false" onAction="#onButton_ProjetClick" text="Projet" />
-      <Button fx:id="Button_Employe" mnemonicParsing="false" onAction="#onButton_EmployeClick" text="Employe" />
-      <ChoiceBox prefWidth="150.0" />
+      <HBox prefHeight="100.0" prefWidth="200.0" />
+      <HBox prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <ChoiceBox prefWidth="150.0" />
+            <Button fx:id="Button_Employe" mnemonicParsing="false" onAction="#onButton_EmployeClick" text="Employe" />
+         </children>
+      </HBox>
+      <HBox prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <ChoiceBox prefWidth="150.0" />
+            <Button fx:id="Button_Projet" mnemonicParsing="false" onAction="#onButton_ProjetClick" text="Projet" />
+         </children>
+      </HBox>
+      <HBox prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <Button fx:id="Button_CreerProjet" mnemonicParsing="false" onAction="#onButton_CreerProjetClick" text="Nouveau Projet" />
+            <Button fx:id="Button_CreerEmploye" mnemonicParsing="false" onAction="#onButton_CreerEmployeClick" text="Nouvel Employe" />
+         </children>
+      </HBox>
    </children>
 </VBox>

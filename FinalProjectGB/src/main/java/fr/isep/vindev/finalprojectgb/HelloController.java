@@ -17,6 +17,9 @@ public class HelloController {
     private Button Button_Employe;
 
     @FXML
+    private Button Button_CreerEmploye;
+
+    @FXML
     protected void onButton_ProjetClick() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("ProjetApp.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 320, 240);
@@ -35,6 +38,29 @@ public class HelloController {
 
         Stage newstage = new Stage();
         newstage.setTitle("Employe");
+        newstage.setScene(scene);
+
+        newstage.show();
+    }
+
+    @FXML
+    protected void onButton_CreerEmployeClick() throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("NewEmployeApp.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 320, 240);
+
+        Stage newstage = new Stage();
+        newstage.setTitle("Création d'un Employe");
+        newstage.setScene(scene);
+
+        newstage.show();
+    }
+    @FXML
+    protected void onButton_CreerProjetClick() throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("NewProjetApp.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 320, 240);
+
+        Stage newstage = new Stage();
+        newstage.setTitle("Création d'un Projet");
         newstage.setScene(scene);
 
         newstage.show();
