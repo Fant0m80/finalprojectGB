@@ -1,14 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="fr.isep.vindev.finalprojectgb.NewEmployeController"
-            prefHeight="400.0" prefWidth="600.0">
-
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.isep.vindev.finalprojectgb.NewEmployeController">
+   <children>
+      <HBox layoutX="166.0" layoutY="86.0" prefHeight="176.0" prefWidth="268.0">
+         <children>
+            <VBox prefHeight="100.0" prefWidth="122.0" spacing="23.0">
+               <children>
+                  <Label text="Nom" />
+                  <Label text="Prenom" />
+                  <Label text="Email" />
+                  <Label text="Tel" />
+               </children>
+               <padding>
+                  <Insets left="5.0" top="5.0" />
+               </padding>
+            </VBox>
+            <VBox prefHeight="200.0" prefWidth="100.0" spacing="15.0">
+               <children>
+                  <TextField fx:id="TextField_Name" />
+                  <TextField fx:id="TextField_Firstname" />
+                  <TextField fx:id="TextField_Email" />
+                  <TextField fx:id="TextField_Tel" />
+               </children>
+               <padding>
+                  <Insets left="5.0" top="2.0" />
+               </padding>
+            </VBox>
+         </children>
+      </HBox>
+      <Button fx:id="Button_CreateEmploye" layoutX="250.0" layoutY="295.0" mnemonicParsing="false" onAction="#onButton_CreateEmployeClick" text="Create Employe" textAlignment="CENTER" />
+   </children>
 </AnchorPane>
