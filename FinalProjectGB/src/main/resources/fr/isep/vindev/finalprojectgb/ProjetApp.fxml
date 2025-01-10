@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.isep.vindev.finalprojectgb.controller.ProjetController">
    <children>
-      <Label fx:id="Label_NomProjet" text="Label" />
       <Button fx:id="Button_AjouterTache" layoutX="245.0" layoutY="348.0" mnemonicParsing="false" onAction="#onButton_AjouterTacheClick" text="Ajouter une tache" />
+      <Pane fx:id="Pane_Tache" layoutX="386.0" layoutY="112.0" prefHeight="200.0" prefWidth="200.0">
+         <children>
+            <Label fx:id="Label_NomProjet" text="Label" />
    </children>
 </AnchorPane>
