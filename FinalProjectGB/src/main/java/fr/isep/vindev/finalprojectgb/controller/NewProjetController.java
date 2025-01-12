@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 
@@ -30,5 +31,9 @@ public class NewProjetController {
         }
         Projet newProjet = new Projet(TextField_NomProjet.getText(),LocalDate_Deadline.getValue(), Double.parseDouble(TextField_BudgetProjet.getText()));
         Projet.tousLesProjets.add(newProjet);
+
+        Stage stage = (Stage) Button_CreationProjet.getScene().getWindow();
+        stage.close();
+
     }
 }
