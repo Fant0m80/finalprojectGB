@@ -1,14 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.isep.vindev.finalprojectgb.controller.ProjetController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@../../../styles.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.isep.vindev.finalprojectgb.controller.ProjetController">
    <children>
-      <Button fx:id="Button_AjouterTache" layoutX="245.0" layoutY="348.0" mnemonicParsing="false" onAction="#onButton_AjouterTacheClick" text="Ajouter une tache" />
-      <Pane fx:id="Pane_Tache" layoutX="386.0" layoutY="112.0" prefHeight="200.0" prefWidth="200.0">
-         <children>
-            <Label fx:id="Label_NomProjet" text="Label" />
+      <Polygon fill="DODGERBLUE" layoutX="50.0" layoutY="358.0" points="-49.999996185302734, 42.0, 50.79999542236328, 42.0, -50.00000762939453, -358.0" stroke="BLACK" strokeType="INSIDE" />
+      <Polygon fill="DODGERBLUE" layoutX="382.0" layoutY="155.0" points="118.39999389648438, -155.0, 218.0, 245.0, 218.199951171875, -155.0" stroke="BLACK" strokeType="INSIDE" />
+      <Button fx:id="Button_AjouterTache" layoutX="268.0" layoutY="327.0" mnemonicParsing="false" onAction="#onButton_AjouterTacheClick" text="Ajouter une tache" />
+      <SplitPane fx:id="splitPane" dividerPositions="0.22278225806451618" layoutX="72.0" layoutY="45.0" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0" styleClass="custom-splitpane">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+               <children>
+            
+                  <Label fx:id="Label_NomProjet" layoutX="70.0" layoutY="12.0" text="Label" />
+               </children>
+            </AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" />
+        </items>
+      </SplitPane>
    </children>
 </AnchorPane>

@@ -23,7 +23,11 @@ public class NewProjetController {
 
     @FXML
     protected void onButton_CreationProjetClick() throws IOException {
-
+        for (Projet projet : Projet.tousLesProjets){
+            if (projet.getNomDuProjet() == TextField_NomProjet.getText()){
+                return;
+            }
+        }
         Projet newProjet = new Projet(TextField_NomProjet.getText(),LocalDate_Deadline.getValue(), Double.parseDouble(TextField_BudgetProjet.getText()));
         Projet.tousLesProjets.add(newProjet);
     }
