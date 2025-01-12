@@ -4,6 +4,7 @@ import fr.isep.vindev.finalprojectgb.Employe;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 
@@ -39,5 +40,8 @@ public class NewEmployeController {
         }
 
         Employe.tousLesEmployes.add(new Employe(name, firstname, email, telephone));
+
+        Stage stage = (Stage) Button_CreateEmploye.getScene().getWindow();
+        stage.close();
     }
 }

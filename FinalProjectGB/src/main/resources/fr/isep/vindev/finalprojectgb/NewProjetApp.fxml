@@ -27,10 +27,10 @@
                   </HBox>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <Label text="Budget :">
-                           <padding>
-                              <Insets right="60.0" />
-                           </padding>
+                        <Label text="Budget (en €) :">
+                           <HBox.margin>
+                              <Insets right="27.0" />
+                           </HBox.margin>
                         </Label>
                         <TextField fx:id="TextField_BudgetProjet" />
                      </children>
