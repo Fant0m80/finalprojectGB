@@ -98,4 +98,14 @@ public class HelloController {
         }
     }
 
+    @FXML
+    protected void onButton_AddEmployeToProjetClick() throws IOException {
+        Employe selectedEmploye = ChoiceBox_Employe.getValue();
+        Projet selectedProjet = ChoiceBox_Projet.getValue();
+        if (selectedEmploye != null && selectedProjet != null) {
+            selectedProjet.ajouterMembre(selectedEmploye);
+            System.out.println(selectedEmploye + " travaille maintenant sur " + selectedProjet);
+        }
+    }
+
 }
