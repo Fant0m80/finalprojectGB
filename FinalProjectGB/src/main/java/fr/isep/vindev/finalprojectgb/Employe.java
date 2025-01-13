@@ -9,9 +9,9 @@ public class Employe {
     private String prenom;
     private String email;
     private String telephone;
-    private ArrayList listeProjet = new ArrayList<Projet>();
+    private ArrayList<Projet> listeProjet = new ArrayList<Projet>();
     private String[] role = new String[2];
-    private ArrayList historique = new ArrayList<Projet>();
+    private ArrayList<Projet> historique = new ArrayList<Projet>();
 
     public static ArrayList<Employe> tousLesEmployes = new ArrayList<Employe>();
 

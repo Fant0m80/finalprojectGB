@@ -7,8 +7,8 @@ import java.util.Date;
 public class Projet {
     private String nomDuProjet;
     private LocalDate deadline;
-    private ArrayList listeDesMembres = new ArrayList<Employe>();
-    private ArrayList listeDesTaches = new ArrayList<Tache>();
+    private ArrayList<Employe> listeDesMembres = new ArrayList<Employe>();
+    private ArrayList<Tache> listeDesTaches = new ArrayList<Tache>();
     private double budget;
 
     public static ArrayList<Projet> tousLesProjets = new ArrayList<Projet>();

@@ -29,5 +29,8 @@
             </VBox>
          </children>
       </HBox>
+      <HBox id="HBox_listeProjet" fx:id="HBox_listeProjet" spacing="10" prefHeight="100.0" prefWidth="200.0">
+
+      </HBox>
    </content>
 </TitledPane>
