@@ -8,6 +8,7 @@ import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 
@@ -46,7 +47,8 @@ public class ProjetController {
     @FXML
     public void initialize(){
         Dialog_CreationTache.setVisible(false);
-        Label_AffichageProjet.setText("Projet : " + Projet.getNomProjetSelected());
+        Stage stage = (Stage) AnchorPane_Parent.getScene().getWindow();
+        Label_AffichageProjet.setText(stage.getTitle());
     }
 
     @FXML

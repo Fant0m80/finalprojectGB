@@ -34,12 +34,9 @@ public class HelloController {
         Scene scene = new Scene(fxmlLoader.load(), 600, 400);
         scene.getStylesheets().add("path/to/styles.css");
 
-        Projet projetSelected = ChoiceBox_Projet.getValue();
-        Projet.setNomProjetSelected(projetSelected.getNomDuProjet());
-
         Stage newstage = new Stage();
 
-        newstage.setTitle("Projet");
+        newstage.setTitle("Projet : " + ChoiceBox_Projet.getValue().getNomDuProjet() );
         newstage.setScene(scene);
 
         newstage.show();
