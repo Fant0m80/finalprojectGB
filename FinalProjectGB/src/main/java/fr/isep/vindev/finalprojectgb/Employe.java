@@ -8,14 +8,14 @@ public class Employe {
     private String nom;
     private String prenom;
     private String email;
-    private int telephone;
+    private String telephone;
     private ArrayList listeProjet = new ArrayList<Projet>();
     private String[] role = new String[2];
     private ArrayList historique = new ArrayList<Projet>();
 
     public static ArrayList<Employe> tousLesEmployes = new ArrayList<Employe>();
 
-    public Employe(String nom, String prenom, String email, int telephone) {
+    public Employe(String nom, String prenom, String email, String telephone) {
         this.id = UUID.randomUUID();
         this.nom = nom;
         this.prenom = prenom;
@@ -39,7 +39,7 @@ public class Employe {
         return email;
     }
 
-    public int getTelephone() {
+    public String getTelephone() {
         return telephone;
     }
 
@@ -67,7 +67,7 @@ public class Employe {
         this.email = email;
     }
 
-    public void setTelephone(int telephone) {
+    public void setTelephone(String telephone) {
         this.telephone = telephone;
     }
 

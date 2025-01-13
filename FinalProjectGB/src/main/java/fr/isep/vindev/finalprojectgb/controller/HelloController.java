@@ -43,9 +43,15 @@ public class HelloController {
 
     @FXML
     protected void onButton_EmployeClick() throws IOException {
-        Employe selectedEmploye = ChoiceBox_Employe.getValue();
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("EmployeApp.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 800, 800);
+
+        EmployeController employeController = fxmlLoader.getController();
+
+        Employe selectedEmploye = ChoiceBox_Employe.getValue();
+        if (selectedEmploye != null) {
+            employeController.afficherEmploye(selectedEmploye);
+        }
 
         Stage newstage = new Stage();
         newstage.setTitle("Employe");

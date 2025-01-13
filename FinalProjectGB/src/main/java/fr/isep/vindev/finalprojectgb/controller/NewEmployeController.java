@@ -30,16 +30,14 @@ public class NewEmployeController {
         String firstname = TextField_Firstname.getText();
         String email = TextField_Email.getText();
         String tel = TextField_Tel.getText();
-        int telephone = 0;
         for (int i = 0; i < tel.length(); i++) {
             if (tel.charAt(i) != '0' && tel.charAt(i) != '1' && tel.charAt(i) != '2' && tel.charAt(i) != '3' && tel.charAt(i) != '4' && tel.charAt(i) != '5' && tel.charAt(i) != '6' && tel.charAt(i) != '7' && tel.charAt(i) != '8' && tel.charAt(i) != '9') {
                 System.out.println("Le numéro de telephone n'est pas valide !!");
                 return;
             }
-            telephone = Integer.parseInt(tel);
         }
 
-        Employe.tousLesEmployes.add(new Employe(name, firstname, email, telephone));
+        Employe.tousLesEmployes.add(new Employe(name, firstname, email, tel));
 
         Stage stage = (Stage) Button_CreateEmploye.getScene().getWindow();
         stage.close();
