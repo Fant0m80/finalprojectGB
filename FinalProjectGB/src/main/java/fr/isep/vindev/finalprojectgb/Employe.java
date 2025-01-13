@@ -104,4 +104,9 @@ public class Employe {
         this.listeProjet.remove(projet);
         this.addHistorique(projet);
     }
+
+    @Override
+    public String toString() {
+        return nom + " " + prenom;
+    }
 }

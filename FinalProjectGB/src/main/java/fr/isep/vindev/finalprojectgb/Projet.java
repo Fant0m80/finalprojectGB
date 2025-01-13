@@ -78,4 +78,9 @@ public class Projet {
     public double getBudget() {
         return budget;
     }
+
+    @Override
+    public String toString() {
+        return nomDuProjet;
+    }
 }

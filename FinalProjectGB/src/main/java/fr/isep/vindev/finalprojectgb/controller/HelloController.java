@@ -23,10 +23,10 @@ public class HelloController {
     private Button Button_CreerEmploye;
 
     @FXML
-    private ChoiceBox ChoiceBox_Employe;
+    private ChoiceBox<Employe> ChoiceBox_Employe;
 
     @FXML
-    private ChoiceBox ChoiceBox_Projet;
+    private ChoiceBox<Projet> ChoiceBox_Projet;
 
     @FXML
     protected void onButton_ProjetClick() throws IOException {
@@ -43,6 +43,7 @@ public class HelloController {
 
     @FXML
     protected void onButton_EmployeClick() throws IOException {
+        Employe selectedEmploye = ChoiceBox_Employe.getValue();
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("EmployeApp.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 800, 800);
 
@@ -56,7 +57,7 @@ public class HelloController {
     @FXML
     protected void onButton_CreerEmployeClick() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("NewEmployeApp.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 800, 800);
+        Scene scene = new Scene(fxmlLoader.load(), 600, 500);
 
         Stage newstage = new Stage();
         newstage.setTitle("Création d'un Employe");
@@ -80,14 +81,14 @@ public class HelloController {
     protected void onChoiceBox_EmployeClick() throws IOException {
         ChoiceBox_Employe.getItems().clear();
         for (int i = 0; i< Employe.tousLesEmployes.size(); i++ ){
-            ChoiceBox_Employe.getItems().add(Employe.tousLesEmployes.get(i).getNom());
+            ChoiceBox_Employe.getItems().add(Employe.tousLesEmployes.get(i));
         }
     }
     @FXML
     protected void onChoiceBox_ProjetClick() throws IOException {
         ChoiceBox_Projet.getItems().clear();
         for (int i = 0; i< Projet.tousLesProjets.size(); i++ ){
-            ChoiceBox_Projet.getItems().add(Projet.tousLesProjets.get(i).getNomDuProjet());
+            ChoiceBox_Projet.getItems().add(Projet.tousLesProjets.get(i));
         }
     }
 
