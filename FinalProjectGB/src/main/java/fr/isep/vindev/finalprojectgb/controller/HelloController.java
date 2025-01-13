@@ -31,7 +31,7 @@ public class HelloController {
     @FXML
     protected void onButton_ProjetClick() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("ProjetApp.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 800, 800);
+        Scene scene = new Scene(fxmlLoader.load(), 600, 400);
         scene.getStylesheets().add("path/to/styles.css");
 
         Stage newstage = new Stage();
@@ -74,7 +74,7 @@ public class HelloController {
     @FXML
     protected void onButton_CreerProjetClick() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("NewProjetApp.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 800, 800);
+        Scene scene = new Scene(fxmlLoader.load(), 600, 400);
 
         Stage newstage = new Stage();
         newstage.setTitle("Création d'un Projet");
