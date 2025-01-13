@@ -5,8 +5,11 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.shape.*?>
 
-<AnchorPane id="AnchorPane_Parent" fx:id="AnchorPane_Parent" prefHeight="400.0" prefWidth="600.0" stylesheets="@../../../styles.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.isep.vindev.finalprojectgb.controller.ProjetController">
+<AnchorPane id="AnchorPane_Parent" fx:id="AnchorPane_Parent" prefHeight="400.0" prefWidth="600.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.isep.vindev.finalprojectgb.controller.ProjetController">
    <children>
+      <Polygon fill="DODGERBLUE" layoutX="50.0" layoutY="358.0" nodeOrientation="LEFT_TO_RIGHT" points="-49.999996185302734, 42.0, 50.79999542236328, 42.0, -50.00000762939453, -358.0" stroke="DODGERBLUE" strokeType="INSIDE" />
+      <Polygon fill="DODGERBLUE" layoutX="382.0" layoutY="155.0" nodeOrientation="LEFT_TO_RIGHT" points="118.39999389648438, -155.0, 218.0, 245.0, 218.199951171875, -155.0" stroke="DODGERBLUE" strokeType="INSIDE" />
+      <Button fx:id="Button_AjouterTache" layoutX="268.0" layoutY="327.0" mnemonicParsing="false" onAction="#onButton_AjouterTacheClick" text="Ajouter une tache" />
        <DialogPane fx:id="Dialog_CreationTache" layoutX="50.0" layoutY="40.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="480.0">
            <header>
                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="320.0">
@@ -70,8 +73,6 @@
                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="320.0" />
            </expandableContent>
        </DialogPane>
-      <Polygon fill="DODGERBLUE" layoutX="50.0" layoutY="358.0" nodeOrientation="LEFT_TO_RIGHT" points="-49.999996185302734, 42.0, 50.79999542236328, 42.0, -50.00000762939453, -358.0" stroke="BLACK" strokeType="INSIDE" />
-      <Polygon fill="DODGERBLUE" layoutX="382.0" layoutY="155.0" nodeOrientation="LEFT_TO_RIGHT" points="118.39999389648438, -155.0, 218.0, 245.0, 218.199951171875, -155.0" stroke="BLACK" strokeType="INSIDE" />
-      <Button fx:id="Button_AjouterTache" layoutX="268.0" layoutY="327.0" mnemonicParsing="false" onAction="#onButton_AjouterTacheClick" text="Ajouter une tache" />
+      <Label fx:id="Label_AffichageProjet" layoutX="36.0" layoutY="32.0" text="Projet" />
       </children>
 </AnchorPane>

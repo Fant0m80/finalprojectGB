@@ -1,5 +1,6 @@
 package fr.isep.vindev.finalprojectgb.controller;
 
+import fr.isep.vindev.finalprojectgb.Projet;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.geometry.Orientation;
@@ -40,8 +41,12 @@ public class ProjetController {
     private AnchorPane AnchorPane_Parent;
 
     @FXML
+    private Label Label_AffichageProjet;
+
+    @FXML
     public void initialize(){
         Dialog_CreationTache.setVisible(false);
+        Label_AffichageProjet.setText("Projet : " + Projet.getNomProjetSelected());
     }
 
     @FXML

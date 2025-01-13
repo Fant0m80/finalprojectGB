@@ -1,7 +1,0 @@
-.custom-splitpane {
-    -fx-border-color: lightgray; /* Couleur de la bordure */
-    -fx-border-width: 2;   /* Épaisseur de la bordure */
-    -fx-border-style: solid; /* Style de la bordure (solid, dashed, etc.) */
-    -fx-background-color: lightblue; /* Couleur d'arrière-plan (facultatif) */
-    -fx-padding: 5; /* Espacement entre la bordure et le contenu */
-}

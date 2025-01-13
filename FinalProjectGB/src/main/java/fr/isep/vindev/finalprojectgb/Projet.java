@@ -12,6 +12,7 @@ public class Projet {
     private double budget;
 
     public static ArrayList<Projet> tousLesProjets = new ArrayList<Projet>();
+    public static String nomProjetSelected = new String();
 
     public Projet(String nomDuProjet, LocalDate deadline, double budget) {
         this.nomDuProjet = nomDuProjet;
@@ -77,6 +78,14 @@ public class Projet {
 
     public double getBudget() {
         return budget;
+    }
+
+    public static String getNomProjetSelected() {
+        return nomProjetSelected;
+    }
+
+    public static void setNomProjetSelected(String nomProjetSelected) {
+        Projet.nomProjetSelected = nomProjetSelected;
     }
 
     @Override

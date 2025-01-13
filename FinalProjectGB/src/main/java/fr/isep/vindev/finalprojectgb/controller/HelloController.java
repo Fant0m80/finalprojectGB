@@ -34,7 +34,11 @@ public class HelloController {
         Scene scene = new Scene(fxmlLoader.load(), 600, 400);
         scene.getStylesheets().add("path/to/styles.css");
 
+        Projet projetSelected = ChoiceBox_Projet.getValue();
+        Projet.setNomProjetSelected(projetSelected.getNomDuProjet());
+
         Stage newstage = new Stage();
+
         newstage.setTitle("Projet");
         newstage.setScene(scene);
 
@@ -44,7 +48,7 @@ public class HelloController {
     @FXML
     protected void onButton_EmployeClick() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("EmployeApp.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 800, 800);
+        Scene scene = new Scene(fxmlLoader.load(), 600, 400);
 
         EmployeController employeController = fxmlLoader.getController();
 
