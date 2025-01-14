@@ -27,6 +27,11 @@ public class NewProjetController {
     private DatePicker LocalDate_Deadline;
 
     public void initialize(){
+        if (Projet.creation){
+            Button_ModificationProjet.setVisible(false);
+        } else {
+            Button_CreationProjet.setVisible(false);
+        }
     }
 
     @FXML
@@ -61,6 +66,7 @@ public class NewProjetController {
                 }
             }
         }
+        Projet.reinitialiserProjetSelectionnee(Projet.projetSelectionnee);
         Stage stage = (Stage) Button_ModificationProjet.getScene().getWindow();
         stage.close();
 

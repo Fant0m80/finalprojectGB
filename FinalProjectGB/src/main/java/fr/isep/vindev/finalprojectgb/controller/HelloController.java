@@ -152,6 +152,7 @@ public class HelloController {
     @FXML
     protected void onButton_ModifierProjetClick() throws IOException{
         Projet.projetParNom(ChoiceBox_Projet.getValue().getNomDuProjet());
+        Projet.creation = false;
 
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("NewProjetApp.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 600, 400);

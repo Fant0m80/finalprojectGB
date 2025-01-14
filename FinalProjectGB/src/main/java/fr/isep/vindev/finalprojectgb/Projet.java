@@ -3,6 +3,7 @@ package fr.isep.vindev.finalprojectgb;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
 
 public class Projet {
     private String nomDuProjet;
@@ -13,6 +14,7 @@ public class Projet {
 
     public static ArrayList<Projet> tousLesProjets = new ArrayList<Projet>();
     public static Projet projetSelectionnee = new Projet(null, null, 0);
+    public static boolean creation = true;
 
     public Projet(String nomDuProjet, LocalDate deadline, double budget) {
         this.nomDuProjet = nomDuProjet;
@@ -81,11 +83,9 @@ public class Projet {
     }
 
     public static void supprimerProjet(Projet projetasupp){
-        for (Projet projet : tousLesProjets){
-            if (projet.getNomDuProjet() == projetasupp.getNomDuProjet()){
-                tousLesProjets.remove(projet);
-            }
-        }
+        tousLesProjets.removeIf(projet ->
+                projet.getNomDuProjet().equals(projetasupp.getNomDuProjet())
+        );
     }
 
     public static void projetParNom(String nomDuProjet){
@@ -96,6 +96,12 @@ public class Projet {
                 projetSelectionnee.setBudget(projet.getBudget());
             }
         }
+    }
+
+    public static void reinitialiserProjetSelectionnee(Projet projetselec){
+        projetselec.setNomDuProjet(null);
+        projetselec.setBudget(0);
+        projetselec.setDeadline(null);
     }
 
     @Override
