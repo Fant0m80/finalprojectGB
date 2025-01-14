@@ -6,20 +6,31 @@ import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.geometry.Orientation;
 import javafx.scene.control.*;
+import javafx.scene.input.MouseButton;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 public class ProjetController {
 
     private int coordonneeX = 35;
-    private int coordonneeY = 60;
+    private int coordonneeY = 70;
+    private Map<String, SplitPane> dictTacheToSplitPane = new HashMap<>();
+
 
     @FXML
     private Button Button_AjouterTache;
+
+    @FXML
+    private Button Button_ModifierTache;
+
+    @FXML
+    private Button Button_CreationTache;
 
     @FXML
     private DialogPane Dialog_CreationTache;
@@ -70,10 +81,16 @@ public class ProjetController {
         Dialog_CreationTache.setVisible(true);
         Dialog_CreationTache.toFront();
 
-        Button_AjouterTache.setDisable(false);
+        Button_AjouterTache.setDisable(true);
+        Button_CreationTache.toFront();
+        Button_CreationTache.setDisable(false);
+        Button_ModifierTache.setVisible(false);
     }
 
     public void ajouterTache(AnchorPane parentPane){
+        Button_AjouterTache.setDisable(true);
+
+        //Création splitPane avec ses infos
         SplitPane splitPane = new SplitPane();
         splitPane.setOrientation(Orientation.VERTICAL);
 
@@ -100,7 +117,7 @@ public class ProjetController {
         paneBas.setStyle("-fx-background-color: lightblue;");
 
         splitPane.getItems().addAll(paneHaut, paneBas);
-        splitPane.setDividerPositions(0.3);
+        splitPane.setDividerPositions(0.2);
 
         splitPane.setLayoutX(coordonneeX);
         splitPane.setLayoutY(coordonneeY);
@@ -110,6 +127,38 @@ public class ProjetController {
         splitPane.setPrefSize(200, 250);
 
         parentPane.getChildren().add(splitPane);
+        System.out.println("oiui");
+        //Création ContextMenu
+        ContextMenu contextMenu = new ContextMenu();
+
+        MenuItem modifier = new MenuItem("Modifier");
+        MenuItem supprimer = new MenuItem("Supprimer");
+        contextMenu.getItems().addAll(modifier,supprimer);
+
+        modifier.setOnAction(event ->{
+            Button_CreationTache.setVisible(false);
+
+            TextField_CreationTache.clear();
+            TextField_Categorie.clear();
+            DatePicker_Deadline.setValue(null); ;
+            TextField_Priorite.clear();
+            TextArea_Description.clear();
+
+            Dialog_CreationTache.setVisible(true);
+            Dialog_CreationTache.toFront();
+
+            Button_AjouterTache.setDisable(false);
+        });
+        //supprimer.setOnAction(event ->);
+
+        splitPane.setOnMouseClicked(event ->{
+            if (event.getButton() == MouseButton.SECONDARY){
+                contextMenu.show(splitPane, event.getScreenX(), event.getScreenY());
+            }
+        });
+        dictTacheToSplitPane.put(TextField_CreationTache.getText(), splitPane);
+        parentPane.getChildren().add(splitPane);
+
     }
 
     @FXML
@@ -120,11 +169,58 @@ public class ProjetController {
                 TextArea_Description.getText());
         projetActuel.getListeDesTaches().add(newTache);
 
+
+
+        Dialog_CreationTache.setVisible(false);
+        Button_AjouterTache.setDisable(false);
+        Button_ModifierTache.setVisible(true);
+
+        ajouterTache(AnchorPane_Parent);
+
+    }
+
+    @FXML
+    protected void onButton_ModifierTacheClick(){
+        for (Tache tache : Projet.projetSelectionnee.getListeDesTaches() ){
+            if (tache.getNomTache() == Tache.tacheSelectionnee.getNomTache() ){
+                SplitPane splitPane = dictTacheToSplitPane.get(tache.getNomTache());
+                if (splitPane != null){
+                    StackPane paneHaut = (StackPane) splitPane.getItems().get(0);
+                    Label labelNomTache = (Label) paneHaut.getChildren().get(0);
+
+                    StackPane paneBas = (StackPane) splitPane.getItems().get(1);
+                    VBox vbox = (VBox) paneBas.getChildren().get(0);
+
+                    if (TextField_CreationTache.getText() != null){
+                        tache.setNomTache(TextField_CreationTache.getText());
+                        labelNomTache.setText(tache.getNomTache());
+                        SplitPane existingSplitPane = dictTacheToSplitPane.remove(Tache.tacheSelectionnee.getNomTache());
+                        if (existingSplitPane != null) {
+                            dictTacheToSplitPane.put(tache.getNomTache(), existingSplitPane);
+                        }
+
+                    }if (TextArea_Description.getText() != null ) {
+                        tache.setDescription(TextArea_Description.getText());
+                        ((Label) vbox.getChildren().get(3)).setText("Description : " + tache.getDescription());
+
+                    }if (TextField_Priorite.getText() != null ) {
+                        tache.setPriorite(Integer.parseInt(TextField_Priorite.getText()));
+                        ((Label) vbox.getChildren().get(1)).setText("Priorité : " + tache.getPriorite());
+
+                    }if (TextField_Categorie.getText() != null ) {
+                        tache.setCategorie(TextField_Categorie.getText());
+                        ((Label) vbox.getChildren().get(0)).setText("Catégorie : " + tache.getCategorie());
+
+                    }if (DatePicker_Deadline.getValue() != null){
+                        tache.setDeadline(DatePicker_Deadline.getValue());
+                        ((Label) vbox.getChildren().get(2)).setText("Deadline : " + tache.getDeadline());
+                    }
+                }
+            }
+        }
+        Button_CreationTache.setVisible(true);
         Dialog_CreationTache.setVisible(false);
         Button_AjouterTache.setDisable(false);
 
-        
-
-        ajouterTache(AnchorPane_Parent);
     }
 }

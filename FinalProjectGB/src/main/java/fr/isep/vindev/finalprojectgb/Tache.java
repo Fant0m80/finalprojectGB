@@ -15,6 +15,8 @@ public class Tache {
     private String description;
     private ArrayList listeMembres = new ArrayList<Employe>();
 
+    public static Tache tacheSelectionnee = new Tache(null,Projet.projetSelectionnee,null,null,0,null);
+
     public Tache(String nomTache, Projet projet, LocalDate deadline, String categorie, int priorite, String description) {
         this.nomTache = nomTache;
         this.projet = projet;

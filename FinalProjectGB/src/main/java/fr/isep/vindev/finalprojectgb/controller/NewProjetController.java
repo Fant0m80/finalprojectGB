@@ -53,15 +53,14 @@ public class NewProjetController {
 
     @FXML
     protected void onButton_ModificationProjetClick() throws IOException {
-        System.out.println("Try " + Projet.projetSelectionnee.getNomDuProjet());
         for (Projet projet : Projet.tousLesProjets){
             if (projet.getNomDuProjet() == Projet.projetSelectionnee.getNomDuProjet()){
 
                 if (TextField_NomProjet.getText() != null){
                     projet.setNomDuProjet(TextField_NomProjet.getText());
-                } else if (TextField_BudgetProjet.getText() != null) {
+                }if (TextField_BudgetProjet.getText() != null) {
                     projet.setBudget(Integer.parseInt(TextField_BudgetProjet.getText()) );
-                } else if (LocalDate_Deadline.getValue() != null) {
+                }if (LocalDate_Deadline.getValue() != null) {
                     projet.setDeadline(LocalDate_Deadline.getValue());
                 }
             }

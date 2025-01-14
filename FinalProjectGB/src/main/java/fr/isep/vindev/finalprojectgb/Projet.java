@@ -1,5 +1,8 @@
 package fr.isep.vindev.finalprojectgb;
 
+import javafx.scene.control.ContextMenu;
+import javafx.scene.control.MenuItem;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
@@ -74,7 +77,7 @@ public class Projet {
         return listeDesMembres;
     }
 
-    public ArrayList getListeDesTaches() {
+    public ArrayList<Tache> getListeDesTaches() {
         return listeDesTaches;
     }
 
@@ -94,6 +97,11 @@ public class Projet {
                 projetSelectionnee.setNomDuProjet(projet.getNomDuProjet());
                 projetSelectionnee.setBudget(projet.getBudget());
                 projetSelectionnee.setDeadline(projet.getDeadline());
+                if (projet.getListeDesTaches() != null){
+                    for(Tache tache : projet.listeDesTaches){
+                        projetSelectionnee.getListeDesTaches().add(tache);
+                    }
+                }
             }
         }
     }
@@ -111,6 +119,20 @@ public class Projet {
             }
         } return projetSelectionnee;
     }
+
+    public static void tacheParNom(String nomTache, String nomDuProjet){
+        projetParNom(nomDuProjet);
+        for (Tache tache : projetSelectionnee.listeDesTaches){
+            if (nomTache.equals(tache.getNomTache())){
+                Tache.tacheSelectionnee.setNomTache(nomTache);
+                Tache.tacheSelectionnee.setCategorie(tache.getCategorie());
+                Tache.tacheSelectionnee.setDeadline(tache.getDeadline());
+                Tache.tacheSelectionnee.setDescription(tache.getDescription());
+                Tache.tacheSelectionnee.setPriorite(tache.getPriorite());
+            }
+        }
+    }
+
 
     @Override
     public String toString() {
