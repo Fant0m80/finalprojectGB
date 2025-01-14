@@ -85,4 +85,12 @@ public class Tache {
             }
         }
     }
+
+    public static void supprimerTache(String nomTache, Projet projet){
+        for (Tache tache : projet.getListeDesTaches()){
+            if (tache.getNomTache() == nomTache){
+                projet.getListeDesTaches().remove(tache);
+            }
+        }
+    }
 }

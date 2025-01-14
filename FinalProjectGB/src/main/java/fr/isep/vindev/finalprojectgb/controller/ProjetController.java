@@ -149,7 +149,22 @@ public class ProjetController {
 
             Button_AjouterTache.setDisable(false);
         });
-        //supprimer.setOnAction(event ->);
+        supprimer.setOnAction(event ->{
+            for (Projet projet : Projet.tousLesProjets){
+                if (Projet.projetSelectionnee.getNomDuProjet() == projet.getNomDuProjet()){
+                    StackPane paneHaut2 = (StackPane) splitPane.getItems().get(0);
+
+                    Label labelNomTache2 = (Label) paneHaut2.getChildren().get(0);
+
+                    System.out.println("Label de la tâche à supprimer : " + labelNomTache2.getText());
+
+                    Tache.supprimerTache(labelNomTache2.getText(), projet);
+                    Projet.projetSelectionnee.getListeDesTaches().remove(Tache.tacheSelectionnee);
+                    AnchorPane_Parent.getChildren().remove(splitPane);
+                    dictTacheToSplitPane.remove(Tache.tacheSelectionnee.getNomTache());
+                }
+            }
+        });
 
         splitPane.setOnMouseClicked(event ->{
             if (event.getButton() == MouseButton.SECONDARY){
