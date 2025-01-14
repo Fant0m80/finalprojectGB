@@ -49,10 +49,19 @@
             </VBox>
             <VBox prefHeight="200.0" prefWidth="250.0">
                <children>
-                  <Button fx:id="Button_CreationProjet" mnemonicParsing="false" onAction="#onButton_CreationProjetClick" text="Créer">
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Button fx:id="Button_CreationProjet" mnemonicParsing="false" onAction="#onButton_CreationProjetClick" text="Créer" />
+                        <Button fx:id="Button_ModificationProjet" mnemonicParsing="false" onAction="#onButton_ModificationProjetClick" text="Modifier">
+                           <HBox.margin>
+                              <Insets left="20.0" />
+                           </HBox.margin>
+                        </Button>
+                     </children>
                      <VBox.margin>
-                        <Insets left="150.0" top="300.0" />
-                     </VBox.margin></Button>
+                        <Insets left="40.0" top="250.0" />
+                     </VBox.margin>
+                  </HBox>
                </children>
             </VBox>
          </children></HBox>

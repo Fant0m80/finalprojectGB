@@ -47,8 +47,8 @@ public class ProjetController {
     @FXML
     public void initialize(){
         Dialog_CreationTache.setVisible(false);
-        Stage stage = (Stage) AnchorPane_Parent.getScene().getWindow();
-        Label_AffichageProjet.setText(stage.getTitle());
+        //Stage stage = (Stage) AnchorPane_Parent.getScene().getWindow();
+        //Label_AffichageProjet.setText(stage.getTitle());
     }
 
     @FXML

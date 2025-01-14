@@ -12,6 +12,7 @@ public class Projet {
     private double budget;
 
     public static ArrayList<Projet> tousLesProjets = new ArrayList<Projet>();
+    public static Projet projetSelectionnee = new Projet(null, null, 0);
 
     public Projet(String nomDuProjet, LocalDate deadline, double budget) {
         this.nomDuProjet = nomDuProjet;
@@ -77,6 +78,24 @@ public class Projet {
 
     public double getBudget() {
         return budget;
+    }
+
+    public static void supprimerProjet(Projet projetasupp){
+        for (Projet projet : tousLesProjets){
+            if (projet.getNomDuProjet() == projetasupp.getNomDuProjet()){
+                tousLesProjets.remove(projet);
+            }
+        }
+    }
+
+    public static void projetParNom(String nomDuProjet){
+        for (Projet projet : tousLesProjets){
+            if (projet.getNomDuProjet() == nomDuProjet){
+                projetSelectionnee.setNomDuProjet(projet.getNomDuProjet());
+                projetSelectionnee.setBudget(projet.getBudget());
+                projetSelectionnee.setBudget(projet.getBudget());
+            }
+        }
     }
 
     @Override

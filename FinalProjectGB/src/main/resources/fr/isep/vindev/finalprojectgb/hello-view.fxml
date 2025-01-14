@@ -1,17 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.isep.vindev.finalprojectgb.controller.HelloController">
    <children>
-      <VBox prefHeight="400.0" prefWidth="338.0">
+      <VBox prefHeight="400.0" prefWidth="600.0">
          <children>
             <HBox prefHeight="100.0" prefWidth="200.0" />
             <HBox prefHeight="100.0" prefWidth="200.0">
                <children>
                   <ChoiceBox fx:id="ChoiceBox_Projet" onMouseClicked="#onChoiceBox_ProjetClick" prefWidth="150.0" />
-                  <Button fx:id="Button_Projet" mnemonicParsing="false" onAction="#onButton_ProjetClick" text="Projet" />
+                  <Button fx:id="Button_Projet" mnemonicParsing="false" onAction="#onButton_ProjetClick" text="Voir" />
+                  <Button fx:id="Button_SupprimerProjet" mnemonicParsing="false" onAction="#onButton_SupprimerProjetClick" text="Supprimer" />
+                  <Button fx:id="Button_ModifierProjet" mnemonicParsing="false" onAction="#onButton_ModifierProjetClick" text="Modifier" />
                </children>
             </HBox>
             <HBox prefHeight="100.0" prefWidth="200.0">
@@ -24,9 +28,17 @@
                <children>
                   <Button fx:id="Button_CreerProjet" mnemonicParsing="false" onAction="#onButton_CreerProjetClick" text="Nouveau Projet" />
                   <Button fx:id="Button_CreerEmploye" mnemonicParsing="false" onAction="#onButton_CreerEmployeClick" text="Nouvel Employe" />
-                  <Button fx:id="Button_AddEmployeToProjet" mnemonicParsing="false" onAction="#onButton_AddEmployeToProjetClick" text="Ajouter l'employe au projet"/>
+                  <Button fx:id="Button_AddEmployeToProjet" mnemonicParsing="false" onAction="#onButton_AddEmployeToProjetClick" text="Ajouter l'employe au projet" />
                </children>
             </HBox>
+            <Label fx:id="Label_Erreur" text="Un case n'est pas remplie !" textFill="#f40303">
+               <VBox.margin>
+                  <Insets bottom="30.0" left="200.0" />
+               </VBox.margin>
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
          </children>
       </VBox>
    </children>
