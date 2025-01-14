@@ -31,7 +31,7 @@
                   <Button fx:id="Button_AddEmployeToProjet" mnemonicParsing="false" onAction="#onButton_AddEmployeToProjetClick" text="Ajouter l'employe au projet" />
                </children>
             </HBox>
-            <Label fx:id="Label_Erreur" text="Un case n'est pas remplie !" textFill="#f40303">
+            <Label fx:id="Label_Erreur" text="Une case n'est pas remplie !" textFill="#f40303">
                <VBox.margin>
                   <Insets bottom="30.0" left="200.0" />
                </VBox.margin>
