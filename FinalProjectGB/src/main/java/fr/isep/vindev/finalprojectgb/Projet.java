@@ -93,7 +93,7 @@ public class Projet {
             if (projet.getNomDuProjet() == nomDuProjet){
                 projetSelectionnee.setNomDuProjet(projet.getNomDuProjet());
                 projetSelectionnee.setBudget(projet.getBudget());
-                projetSelectionnee.setBudget(projet.getBudget());
+                projetSelectionnee.setDeadline(projet.getDeadline());
             }
         }
     }
@@ -102,6 +102,14 @@ public class Projet {
         projetselec.setNomDuProjet(null);
         projetselec.setBudget(0);
         projetselec.setDeadline(null);
+    }
+
+    public static Projet trouverProjetAvecProjetSelec(Projet projetSelectionnee){
+        for (Projet projet : tousLesProjets){
+            if (projet.getNomDuProjet() == projetSelectionnee.getNomDuProjet()){
+                return projet;
+            }
+        } return projetSelectionnee;
     }
 
     @Override

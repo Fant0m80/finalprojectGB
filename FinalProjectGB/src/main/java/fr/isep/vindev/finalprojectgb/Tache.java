@@ -2,19 +2,20 @@ package fr.isep.vindev.finalprojectgb;
 
 import javafx.scene.layout.AnchorPane;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 
 public class Tache {
     private String nomTache;
     private Projet projet;
-    private Date deadline;
+    private LocalDate deadline;
     private String categorie;
     private int priorite;
     private String description;
     private ArrayList listeMembres = new ArrayList<Employe>();
 
-    public Tache(String nomTache, Projet projet, Date deadline, String categorie, int priorite, String description) {
+    public Tache(String nomTache, Projet projet, LocalDate deadline, String categorie, int priorite, String description) {
         this.nomTache = nomTache;
         this.projet = projet;
         this.deadline = deadline;
@@ -27,7 +28,7 @@ public class Tache {
         this.nomTache = nomTache;
     }
 
-    public void setDeadline(Date deadline) {
+    public void setDeadline(LocalDate deadline) {
         this.deadline = deadline;
     }
 
@@ -47,7 +48,7 @@ public class Tache {
         return nomTache;
     }
 
-    public Date getDeadline() {
+    public LocalDate getDeadline() {
         return deadline;
     }
 

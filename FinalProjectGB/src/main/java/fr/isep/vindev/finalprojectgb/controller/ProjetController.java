@@ -1,6 +1,7 @@
 package fr.isep.vindev.finalprojectgb.controller;
 
 import fr.isep.vindev.finalprojectgb.Projet;
+import fr.isep.vindev.finalprojectgb.Tache;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.geometry.Orientation;
@@ -14,8 +15,8 @@ import java.io.IOException;
 
 public class ProjetController {
 
-    private int coordonneeX = 50;
-    private int coordonneeY = 100;
+    private int coordonneeX = 35;
+    private int coordonneeY = 60;
 
     @FXML
     private Button Button_AjouterTache;
@@ -45,10 +46,17 @@ public class ProjetController {
     private Label Label_AffichageProjet;
 
     @FXML
+    private Label Label_Budget;
+
+    @FXML
+    private Label Label_Deadline;
+
+    @FXML
     public void initialize(){
         Dialog_CreationTache.setVisible(false);
-        //Stage stage = (Stage) AnchorPane_Parent.getScene().getWindow();
-        //Label_AffichageProjet.setText(stage.getTitle());
+        Label_AffichageProjet.setText(Projet.projetSelectionnee.getNomDuProjet());
+        Label_Budget.setText("Budget : " + Double.toString(Projet.projetSelectionnee.getBudget()));
+        Label_Deadline.setText("Date butoir : " + Projet.projetSelectionnee.getDeadline().toString());
     }
 
     @FXML
@@ -97,17 +105,23 @@ public class ProjetController {
         splitPane.setLayoutX(coordonneeX);
         splitPane.setLayoutY(coordonneeY);
 
-        coordonneeY += 275;
+        coordonneeX += 225;
 
-        splitPane.setPrefSize(250, 250);
+        splitPane.setPrefSize(200, 250);
 
         parentPane.getChildren().add(splitPane);
     }
 
     @FXML
     protected void onButton_CreationTacheClick(){
+        Projet projetActuel = Projet.trouverProjetAvecProjetSelec(Projet.projetSelectionnee);
+        Tache newTache = new Tache(TextField_CreationTache.getText(), projetActuel,
+                DatePicker_Deadline.getValue(), TextField_Categorie.getText(),Integer.parseInt(TextField_Priorite.getText()),
+                TextArea_Description.getText());
+        projetActuel.getListeDesTaches().add(newTache);
+
         Dialog_CreationTache.setVisible(false);
-        Button_AjouterTache.setDisable(true);
+        Button_AjouterTache.setDisable(false);
 
         
 
