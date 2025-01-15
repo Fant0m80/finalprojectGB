@@ -24,6 +24,7 @@ public class Tache {
         this.categorie = categorie;
         this.priorite = priorite;
         this.description = description;
+        this.listeMembres = new ArrayList<Employe>();
     }
 
     public void setNomTache(String nomTache) {
@@ -66,7 +67,7 @@ public class Tache {
         return description;
     }
 
-    public ArrayList getListeMembres() {
+    public ArrayList<Employe> getListeMembres(){
         return listeMembres;
     }
 

@@ -12,7 +12,7 @@ public class Projet {
     private String nomDuProjet;
     private LocalDate deadline;
     private ArrayList<Employe> listeDesMembres = new ArrayList<Employe>();
-    private ArrayList<Tache> listeDesTaches = new ArrayList<Tache>();
+    private ArrayList<Tache> listeDesTaches;
     private double budget;
 
     public static ArrayList<Projet> tousLesProjets = new ArrayList<Projet>();
@@ -23,6 +23,8 @@ public class Projet {
         this.nomDuProjet = nomDuProjet;
         this.deadline = deadline;
         this.budget = budget;
+        this.listeDesTaches = new ArrayList<>();
+        this.listeDesMembres = new ArrayList<>();
     }
 
     public void attribuerRole(Employe employe, String role) {
@@ -73,7 +75,7 @@ public class Projet {
         return deadline;
     }
 
-    public ArrayList getListeDesMembres() {
+    public ArrayList<Employe> getListeDesMembres() {
         return listeDesMembres;
     }
 
