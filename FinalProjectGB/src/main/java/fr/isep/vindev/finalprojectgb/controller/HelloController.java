@@ -8,10 +8,17 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 public class HelloController {
     @FXML
@@ -81,6 +88,7 @@ public class HelloController {
             newstage.setScene(scene);
 
             newstage.show();
+            Label_Erreur.setVisible(false);
         } else{
             Label_Erreur.setVisible(true);
         }
@@ -167,4 +175,20 @@ public class HelloController {
         ChoiceBox_Projet.getItems().clear();
         Label_Erreur.setVisible(false);
     }
+
+    @FXML
+    protected void onButton_CalendarViewClick() throws IOException{
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("CalendarApp.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 600, 400);
+
+        Stage newstage = new Stage();
+        newstage.setTitle("Calendrier");
+        newstage.setScene(scene);
+
+        newstage.show();
+
+        Label_Erreur.setVisible(false);
+    }
+
+
 }

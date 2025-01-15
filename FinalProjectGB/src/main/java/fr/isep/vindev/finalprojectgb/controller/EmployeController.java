@@ -40,64 +40,27 @@ public class EmployeController {
 
     }
 
-    /*
     private void afficherProjets(ArrayList<Projet> listeProjet) {
         GridPane_listeProjet.getChildren().clear();
-        int c = 0;
-        for (Projet projet : listeProjet) {
-            /*
-            if (GridPane_listeProjet.getChildren().size() == GridPane_listeProjet.getRowCount()*GridPane_listeProjet.getColumnCount()) {
-                GridPane_listeProjet.getRowConstraints().add(new RowConstraints());
-            }
 
-
-            for (int i = 0; i<GridPane_listeProjet.getRowCount(); i++) {
-                for (int j = 0; j < GridPane_listeProjet.getColumnCount(); j++) {
-                    if (isCaseEmpty(GridPane_listeProjet, j, i)) {
-                        Label projetLabel = new Label(projet.getNomDuProjet());
-                        projetLabel.setStyle("-fx-border-color: #d21a1a; -fx-padding: 5;");
-                        GridPane_listeProjet.add(projetLabel, j, i);
-                        GridPane.setColumnIndex(projetLabel, j);
-                        GridPane.setRowIndex(projetLabel, i);
-                        c+=1;
-                        break;
-                    }
-                }
-                if (c == 1){
-                    c = 0;
-                    break;
-                }
-            }
-        }
-    }
-    */
-    private void afficherProjets(ArrayList<Projet> listeProjet) {
-        // Vider la grille avant d'ajouter les nouveaux projets
-        GridPane_listeProjet.getChildren().clear();
-
-        int rows = GridPane_listeProjet.getRowCount(); // Nombre actuel de lignes
-        int cols = GridPane_listeProjet.getColumnCount(); // Nombre fixe de colonnes
-        int totalCells = rows * cols; // Nombre total de cellules
-        int currentCell = 0; // Indice de la cellule en cours
+        int rows = GridPane_listeProjet.getRowCount();
+        int cols = GridPane_listeProjet.getColumnCount();
+        int totalCells = rows * cols;
+        int currentCell = 0;
 
         for (Projet projet : listeProjet) {
-            // Si toutes les cases actuelles sont remplies, ajouter une nouvelle ligne
             if (currentCell >= totalCells) {
                 GridPane_listeProjet.getRowConstraints().add(new RowConstraints());
                 rows++;
-                totalCells = rows * cols; // Recalculer le nombre total de cellules
+                totalCells = rows * cols;
             }
 
-            // Calculer la position de la cellule
-            int row = currentCell / cols; // Ligne correspondante
-            int col = currentCell % cols; // Colonne correspondante
+            int row = currentCell / cols;
+            int col = currentCell % cols;
 
-            // Ajouter le projet à la cellule calculée
             Label projetLabel = new Label(projet.getNomDuProjet());
-            projetLabel.setStyle("-fx-border-color: #d21a1a; -fx-padding: 5;");
+            projetLabel.setStyle("-fx-border-color: #d21a1a; -fx-padding: 5; -fx-alignment: center;");
             GridPane_listeProjet.add(projetLabel, col, row);
-
-            // Passer à la cellule suivante
             currentCell++;
         }
     }
@@ -108,8 +71,6 @@ public class EmployeController {
         for (Node node : grid.getChildren()) {
             Integer rowIndex = GridPane.getRowIndex(node);
             Integer colIndex = GridPane.getColumnIndex(node);
-
-            System.out.println(colIndex + " et " + rowIndex);
 
             rowIndex = (rowIndex == null) ? 0 : rowIndex;
             colIndex = (colIndex == null) ? 0 : colIndex;
