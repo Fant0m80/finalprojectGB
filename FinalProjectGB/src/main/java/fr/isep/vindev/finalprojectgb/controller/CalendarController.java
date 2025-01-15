@@ -2,7 +2,9 @@ package fr.isep.vindev.finalprojectgb.controller;
 
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.RowConstraints;
@@ -17,6 +19,15 @@ import java.util.List;
 public class CalendarController {
     @FXML
     private GridPane GridPane_Calendar;
+
+    @FXML
+    private Label Label_MonthYear;
+
+    @FXML
+    private Button Button_PreviousMonth;
+
+    @FXML
+    private Button Button_NextMonth;
 
     @FXML
     protected void initialize(){
@@ -38,8 +49,10 @@ public class CalendarController {
 
     private void updateCalendarGrid(GridPane grid, List<LocalDate> days) {
         grid.getChildren().clear();
+
         int col = 0;
         int row = 0;
+
         switch (days.get(0).getDayOfWeek()){
             case SUNDAY -> col = 0;
             case MONDAY -> col = 1;
@@ -50,11 +63,13 @@ public class CalendarController {
             case SATURDAY -> col = 6;
         }
 
+        Label_MonthYear.setText(days.get(0).getMonth().toString() + " " + days.get(0).getYear());
+
         for (LocalDate day : days) {
             Text dayText = new Text(String.valueOf(day.getDayOfMonth()));
             grid.add(dayText, col, row);
             col++;
-            if (col == 7) { // Passer à la ligne suivante après 7 jours (une semaine)
+            if (col == 7) {
                 col = 0;
                 row++;
             }
