@@ -1,7 +1,9 @@
 package fr.isep.vindev.finalprojectgb.controller;
 
+import fr.isep.vindev.finalprojectgb.HelloApplication;
 import fr.isep.vindev.finalprojectgb.Projet;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
@@ -13,6 +15,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -92,6 +95,14 @@ public class CalendarController {
             for (Projet projet : projetsInDay) {
                 Button projetButton = new Button();
                 projetButton.setText(projet.getNomDuProjet());
+                projetButton.setUserData(projet);
+                projetButton.setOnAction(event -> {
+                    try {
+                        onButton_ProjetClick(projet);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                });
                 vbox.getChildren().add(projetButton);
             }
 
@@ -129,6 +140,18 @@ public class CalendarController {
         System.out.println("Next month: " + firstDayOfMonth);
         updateCalendar();
         Label_MonthYear.setText(firstDayOfMonth.getMonth().toString() + " " + firstDayOfMonth.getYear());
+    }
+
+    @FXML
+    protected void onButton_ProjetClick(Projet projet) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("ProjetApp.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 600, 400);
+
+        Stage newstage = new Stage();
+        newstage.setTitle("Projet : " + projet.getNomDuProjet());
+        newstage.setScene(scene);
+
+        newstage.show();
     }
 
 }
