@@ -44,6 +44,7 @@
             </HBox>
             <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="194.0">
                <children>
+<<<<<<< Updated upstream
                   <Button fx:id="Button_CreerProjet" mnemonicParsing="false" onAction="#onButton_CreerProjetClick" text="Nouveau Projet">
                      <HBox.margin>
                         <Insets right="20.0" />
@@ -53,6 +54,13 @@
                         <Insets right="20.0" />
                      </HBox.margin></Button>
                   <Button fx:id="Button_AddEmployeToProjet" mnemonicParsing="false" onAction="#onButton_AddEmployeToProjetClick" text="Ajouter l'employé au projet" />
+=======
+                  <Button fx:id="Button_CreerProjet" mnemonicParsing="false" onAction="#onButton_CreerProjetClick" text="Nouveau Projet" />
+                  <Button fx:id="Button_CreerEmploye" mnemonicParsing="false" onAction="#onButton_CreerEmployeClick" text="Nouvel Employe" />
+                  <Button fx:id="Button_AddEmployeToProjet" mnemonicParsing="false" onAction="#onButton_AddEmployeToProjetClick" text="Ajouter l'employe au projet" />
+                  <Button fx:id="Button_CalendarView" mnemonicParsing="false" onAction="#onButton_CalendarViewClick" text="Voir calendrier" />
+
+>>>>>>> Stashed changes
                </children>
             </HBox>
             <Label fx:id="Label_Erreur" text="Une case n'est pas remplie !" textFill="#f40303">
