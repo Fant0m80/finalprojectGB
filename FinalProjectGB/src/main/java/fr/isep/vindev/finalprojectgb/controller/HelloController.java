@@ -49,7 +49,7 @@ public class HelloController {
             Projet.projetParNom(ChoiceBox_Projet.getValue().getNomDuProjet());
             FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("ProjetApp.fxml"));
             Scene scene = new Scene(fxmlLoader.load(), 600, 400);
-            scene.getStylesheets().add("path/to/styles.css");
+
 
             Stage newstage = new Stage();
 

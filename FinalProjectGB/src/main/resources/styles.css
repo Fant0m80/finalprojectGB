@@ -1,0 +1,13 @@
+.custom-splitpane {
+    -fx-border-color: darkgreen;
+    -fx-border-width: 2;
+    -fx-border-style: solid;
+    -fx-background-color: darkgreen;
+    -fx-padding: 5;
+}
+
+.root {
+    -fx-background-image: url('/image/fond_ecran.png');
+    -fx-background-size: cover;
+    -fx-background-position: center center;
+}

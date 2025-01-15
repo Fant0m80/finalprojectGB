@@ -11,6 +11,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import org.controlsfx.control.tableview2.filter.filtereditor.SouthFilter;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -31,6 +32,9 @@ public class ProjetController {
 
     @FXML
     private Button Button_CreationTache;
+
+    @FXML
+    private ScrollPane ScrollPane_Parent;
 
     @FXML
     private DialogPane Dialog_CreationTache;
@@ -88,7 +92,7 @@ public class ProjetController {
     }
 
     public void ajouterTache(AnchorPane parentPane){
-        Button_AjouterTache.setDisable(true);
+        Button_AjouterTache.setDisable(false);
 
         //Création splitPane avec ses infos
         SplitPane splitPane = new SplitPane();
@@ -125,9 +129,10 @@ public class ProjetController {
         coordonneeX += 225;
 
         splitPane.setPrefSize(200, 250);
+        if (!parentPane.getChildren().contains(splitPane)) {
+            parentPane.getChildren().add(splitPane);
+        }
 
-        parentPane.getChildren().add(splitPane);
-        System.out.println("oiui");
         //Création ContextMenu
         ContextMenu contextMenu = new ContextMenu();
 
@@ -136,18 +141,28 @@ public class ProjetController {
         contextMenu.getItems().addAll(modifier,supprimer);
 
         modifier.setOnAction(event ->{
-            Button_CreationTache.setVisible(false);
+            for (Projet projet : Projet.tousLesProjets) {
+                if (Projet.projetSelectionnee.getNomDuProjet() == projet.getNomDuProjet()) {
+                    StackPane paneHaut2 = (StackPane) splitPane.getItems().get(0);
 
-            TextField_CreationTache.clear();
-            TextField_Categorie.clear();
-            DatePicker_Deadline.setValue(null); ;
-            TextField_Priorite.clear();
-            TextArea_Description.clear();
+                    Label labelNomTache2 = (Label) paneHaut2.getChildren().get(0);
+                    Projet.projetSelectionnee.setNomDuProjet(labelNomTache2.getText());
 
-            Dialog_CreationTache.setVisible(true);
-            Dialog_CreationTache.toFront();
+                    Button_CreationTache.setVisible(false);
 
-            Button_AjouterTache.setDisable(false);
+                    TextField_CreationTache.clear();
+                    TextField_Categorie.clear();
+                    DatePicker_Deadline.setValue(null);
+                    ;
+                    TextField_Priorite.clear();
+                    TextArea_Description.clear();
+
+                    Dialog_CreationTache.setVisible(true);
+                    Dialog_CreationTache.toFront();
+
+                    Button_AjouterTache.setDisable(false);
+                }
+            }
         });
         supprimer.setOnAction(event ->{
             for (Projet projet : Projet.tousLesProjets){
@@ -156,7 +171,6 @@ public class ProjetController {
 
                     Label labelNomTache2 = (Label) paneHaut2.getChildren().get(0);
 
-                    System.out.println("Label de la tâche à supprimer : " + labelNomTache2.getText());
 
                     Tache.supprimerTache(labelNomTache2.getText(), projet);
                     Projet.projetSelectionnee.getListeDesTaches().remove(Tache.tacheSelectionnee);
@@ -172,20 +186,21 @@ public class ProjetController {
             }
         });
         dictTacheToSplitPane.put(TextField_CreationTache.getText(), splitPane);
-        parentPane.getChildren().add(splitPane);
-
+        if (!parentPane.getChildren().contains(splitPane)) {
+            parentPane.getChildren().add(splitPane);
+        }
     }
 
     @FXML
     protected void onButton_CreationTacheClick(){
-        Projet projetActuel = Projet.trouverProjetAvecProjetSelec(Projet.projetSelectionnee);
-        Tache newTache = new Tache(TextField_CreationTache.getText(), projetActuel,
-                DatePicker_Deadline.getValue(), TextField_Categorie.getText(),Integer.parseInt(TextField_Priorite.getText()),
-                TextArea_Description.getText());
-        projetActuel.getListeDesTaches().add(newTache);
-
-
-
+        for (Projet projet : Projet.tousLesProjets){
+            if (projet.getNomDuProjet() == Projet.projetSelectionnee.getNomDuProjet()){
+                Tache newTache = new Tache(TextField_CreationTache.getText(), projet,
+                        DatePicker_Deadline.getValue(), TextField_Categorie.getText(),Integer.parseInt(TextField_Priorite.getText()),
+                        TextArea_Description.getText());
+                projet.getListeDesTaches().add(newTache);
+            }
+        }
         Dialog_CreationTache.setVisible(false);
         Button_AjouterTache.setDisable(false);
         Button_ModifierTache.setVisible(true);
@@ -196,42 +211,54 @@ public class ProjetController {
 
     @FXML
     protected void onButton_ModifierTacheClick(){
-        for (Tache tache : Projet.projetSelectionnee.getListeDesTaches() ){
-            if (tache.getNomTache() == Tache.tacheSelectionnee.getNomTache() ){
-                SplitPane splitPane = dictTacheToSplitPane.get(tache.getNomTache());
-                if (splitPane != null){
-                    StackPane paneHaut = (StackPane) splitPane.getItems().get(0);
-                    Label labelNomTache = (Label) paneHaut.getChildren().get(0);
+        for (Projet projet : Projet.tousLesProjets ){
+            if (projet.getNomDuProjet() == Projet.projetSelectionnee.getNomDuProjet()){
 
-                    StackPane paneBas = (StackPane) splitPane.getItems().get(1);
-                    VBox vbox = (VBox) paneBas.getChildren().get(0);
+                for (Tache tache : projet.getListeDesTaches()){
+                    System.out.println(tache.getNomTache());
+                    if (tache.getNomTache() == Tache.tacheSelectionnee.getNomTache() ){
+                        System.out.println("Bonne tache");
+                        SplitPane splitPane = dictTacheToSplitPane.get(tache.getNomTache());
 
-                    if (TextField_CreationTache.getText() != null){
-                        tache.setNomTache(TextField_CreationTache.getText());
-                        labelNomTache.setText(tache.getNomTache());
-                        SplitPane existingSplitPane = dictTacheToSplitPane.remove(Tache.tacheSelectionnee.getNomTache());
-                        if (existingSplitPane != null) {
-                            dictTacheToSplitPane.put(tache.getNomTache(), existingSplitPane);
+                        if (splitPane != null){
+                            System.out.println("TEst Splitpane");
+                            StackPane paneHaut = (StackPane) splitPane.getItems().get(0);
+                            Label labelNomTache = (Label) paneHaut.getChildren().get(0);
+
+                            StackPane paneBas = (StackPane) splitPane.getItems().get(1);
+                            VBox vbox = (VBox) paneBas.getChildren().get(0);
+
+                            if (TextField_CreationTache.getText() != null){
+                                System.out.println("Test Nom");
+                                tache.setNomTache(TextField_CreationTache.getText());
+                                labelNomTache.setText(tache.getNomTache());
+                                SplitPane existingSplitPane = dictTacheToSplitPane.remove(Tache.tacheSelectionnee.getNomTache());
+                                if (existingSplitPane != null) {
+                                    dictTacheToSplitPane.put(tache.getNomTache(), existingSplitPane);
+                                }
+
+                            }if (TextArea_Description.getText() != null ) {
+                                tache.setDescription(TextArea_Description.getText());
+                                ((Label) vbox.getChildren().get(3)).setText("Description : " + tache.getDescription());
+
+                            }if (TextField_Priorite.getText() != null ) {
+                                tache.setPriorite(Integer.parseInt(TextField_Priorite.getText()));
+                                ((Label) vbox.getChildren().get(1)).setText("Priorité : " + tache.getPriorite());
+
+                            }if (TextField_Categorie.getText() != null ) {
+                                tache.setCategorie(TextField_Categorie.getText());
+                                ((Label) vbox.getChildren().get(0)).setText("Catégorie : " + tache.getCategorie());
+
+                            }if (DatePicker_Deadline.getValue() != null){
+                                tache.setDeadline(DatePicker_Deadline.getValue());
+                                ((Label) vbox.getChildren().get(2)).setText("Deadline : " + tache.getDeadline());
+                            }
                         }
-
-                    }if (TextArea_Description.getText() != null ) {
-                        tache.setDescription(TextArea_Description.getText());
-                        ((Label) vbox.getChildren().get(3)).setText("Description : " + tache.getDescription());
-
-                    }if (TextField_Priorite.getText() != null ) {
-                        tache.setPriorite(Integer.parseInt(TextField_Priorite.getText()));
-                        ((Label) vbox.getChildren().get(1)).setText("Priorité : " + tache.getPriorite());
-
-                    }if (TextField_Categorie.getText() != null ) {
-                        tache.setCategorie(TextField_Categorie.getText());
-                        ((Label) vbox.getChildren().get(0)).setText("Catégorie : " + tache.getCategorie());
-
-                    }if (DatePicker_Deadline.getValue() != null){
-                        tache.setDeadline(DatePicker_Deadline.getValue());
-                        ((Label) vbox.getChildren().get(2)).setText("Deadline : " + tache.getDeadline());
                     }
                 }
+
             }
+
         }
         Button_CreationTache.setVisible(true);
         Dialog_CreationTache.setVisible(false);

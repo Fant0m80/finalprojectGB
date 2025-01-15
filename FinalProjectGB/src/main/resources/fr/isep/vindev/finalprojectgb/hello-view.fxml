@@ -3,32 +3,56 @@
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.isep.vindev.finalprojectgb.controller.HelloController">
    <children>
+      <Polygon fill="#21e42b" layoutX="50.0" layoutY="358.0" nodeOrientation="LEFT_TO_RIGHT" points="-49.999996185302734, 42.0, 50.79999542236328, 42.0, -50.00000762939453, -358.0" stroke="#21e42b" strokeType="INSIDE" />
+      <Polygon fill="#21e42b" layoutX="382.0" layoutY="155.0" nodeOrientation="LEFT_TO_RIGHT" points="118.39999389648438, -155.0, 218.0, 245.0, 218.199951171875, -155.0" stroke="#21e42b" strokeType="INSIDE" />
       <VBox prefHeight="400.0" prefWidth="600.0">
          <children>
             <HBox prefHeight="100.0" prefWidth="200.0" />
             <HBox prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <ChoiceBox fx:id="ChoiceBox_Projet" onMouseClicked="#onChoiceBox_ProjetClick" prefWidth="150.0" />
-                  <Button fx:id="Button_Projet" mnemonicParsing="false" onAction="#onButton_ProjetClick" text="Voir" />
-                  <Button fx:id="Button_SupprimerProjet" mnemonicParsing="false" onAction="#onButton_SupprimerProjetClick" text="Supprimer" />
+                  <ChoiceBox fx:id="ChoiceBox_Projet" onMouseClicked="#onChoiceBox_ProjetClick" prefWidth="150.0">
+                     <HBox.margin>
+                        <Insets left="10.0" right="100.0" />
+                     </HBox.margin></ChoiceBox>
+                  <Button fx:id="Button_Projet" mnemonicParsing="false" onAction="#onButton_ProjetClick" text="Voir">
+                     <HBox.margin>
+                        <Insets right="20.0" />
+                     </HBox.margin></Button>
+                  <Button fx:id="Button_SupprimerProjet" mnemonicParsing="false" onAction="#onButton_SupprimerProjetClick" text="Supprimer">
+                     <HBox.margin>
+                        <Insets right="20.0" />
+                     </HBox.margin></Button>
                   <Button fx:id="Button_ModifierProjet" mnemonicParsing="false" onAction="#onButton_ModifierProjetClick" text="Modifier" />
                </children>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
             </HBox>
             <HBox prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <ChoiceBox fx:id="ChoiceBox_Employe" onMouseClicked="#onChoiceBox_EmployeClick" prefWidth="150.0" />
-                  <Button fx:id="Button_Employe" mnemonicParsing="false" onAction="#onButton_EmployeClick" text="Employe" />
+                  <ChoiceBox fx:id="ChoiceBox_Employe" onMouseClicked="#onChoiceBox_EmployeClick" prefWidth="150.0">
+                     <HBox.margin>
+                        <Insets left="10.0" right="100.0" />
+                     </HBox.margin></ChoiceBox>
+                  <Button fx:id="Button_Employe" mnemonicParsing="false" onAction="#onButton_EmployeClick" text="Voir" />
                </children>
             </HBox>
-            <HBox prefHeight="100.0" prefWidth="194.0">
+            <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="194.0">
                <children>
-                  <Button fx:id="Button_CreerProjet" mnemonicParsing="false" onAction="#onButton_CreerProjetClick" text="Nouveau Projet" />
-                  <Button fx:id="Button_CreerEmploye" mnemonicParsing="false" onAction="#onButton_CreerEmployeClick" text="Nouvel Employe" />
-                  <Button fx:id="Button_AddEmployeToProjet" mnemonicParsing="false" onAction="#onButton_AddEmployeToProjetClick" text="Ajouter l'employe au projet" />
+                  <Button fx:id="Button_CreerProjet" mnemonicParsing="false" onAction="#onButton_CreerProjetClick" text="Nouveau Projet">
+                     <HBox.margin>
+                        <Insets right="20.0" />
+                     </HBox.margin></Button>
+                  <Button fx:id="Button_CreerEmploye" mnemonicParsing="false" onAction="#onButton_CreerEmployeClick" text="Nouvel Employe">
+                     <HBox.margin>
+                        <Insets right="20.0" />
+                     </HBox.margin></Button>
+                  <Button fx:id="Button_AddEmployeToProjet" mnemonicParsing="false" onAction="#onButton_AddEmployeToProjetClick" text="Ajouter l'employé au projet" />
                </children>
             </HBox>
             <Label fx:id="Label_Erreur" text="Une case n'est pas remplie !" textFill="#f40303">
@@ -41,5 +65,6 @@
             </Label>
          </children>
       </VBox>
+
    </children>
 </AnchorPane>
