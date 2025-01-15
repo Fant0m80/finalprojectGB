@@ -29,12 +29,11 @@ public class CalendarController {
     @FXML
     private Button Button_NextMonth;
 
+    private LocalDate firstDayOfMonth = LocalDate.now().withDayOfMonth(1);
+
     @FXML
     protected void initialize(){
-    LocalDate selectedDate = LocalDate.now();
-    List<LocalDate> daysInMonth = getDaysInMonth(selectedDate);
-    updateCalendarGrid(GridPane_Calendar, daysInMonth);
-
+        updateCalendar();
     }
 
     private List<LocalDate> getDaysInMonth(LocalDate date) {
@@ -74,5 +73,29 @@ public class CalendarController {
                 row++;
             }
         }
+    }
+
+    private void updateCalendar() {
+        List<LocalDate> daysInMonth = getDaysInMonth(firstDayOfMonth);
+        updateCalendarGrid(GridPane_Calendar, daysInMonth);
+        Label_MonthYear.setText(firstDayOfMonth.getMonth().toString() + " " + firstDayOfMonth.getYear());
+        System.out.println("Calendar updated: " + firstDayOfMonth);
+
+    }
+
+    @FXML
+    private void onButton_PreviousMonthClick() {
+        firstDayOfMonth = firstDayOfMonth.minusMonths(1);
+        System.out.println("Previous month: " + firstDayOfMonth);
+        updateCalendar();
+        Label_MonthYear.setText(firstDayOfMonth.getMonth().toString() + " " + firstDayOfMonth.getYear());
+    }
+
+    @FXML
+    private void onButton_NextMonthClick() {
+        firstDayOfMonth = firstDayOfMonth.plusMonths(1);
+        System.out.println("Next month: " + firstDayOfMonth);
+        updateCalendar();
+        Label_MonthYear.setText(firstDayOfMonth.getMonth().toString() + " " + firstDayOfMonth.getYear());
     }
 }

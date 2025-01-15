@@ -16,9 +16,9 @@
             </Label>
             <HBox alignment="CENTER" fillHeight="false" prefHeight="54.0" prefWidth="700.0" spacing="30.0">
                <children>
-                  <Button id="Button_PreviousMonth" fx:id="Button_PreviousMonth" mnemonicParsing="false" text="Previous" />
+                  <Button id="Button_PreviousMonth" fx:id="Button_PreviousMonth" mnemonicParsing="false" onAction="#onButton_PreviousMonthClick" text="Previous" />
                   <Label id="Label_MonthYear" fx:id="Label_MonthYear" text="Month-Year" textAlignment="CENTER" />
-                  <Button id="Button_NextMonth" fx:id="Button_NextMonth" mnemonicParsing="false" text="Next" />
+                  <Button id="Button_NextMonth" fx:id="Button_NextMonth" mnemonicParsing="false" onAction="#onButton_NextMonthClick" text="Next" />
                </children>
             </HBox>
             <GridPane id="GridPane_DayName" fx:id="GridPane_DayName" alignment="CENTER">
