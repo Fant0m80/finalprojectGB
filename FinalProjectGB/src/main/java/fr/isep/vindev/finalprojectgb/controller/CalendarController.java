@@ -40,6 +40,15 @@ public class CalendarController {
         grid.getChildren().clear();
         int col = 0;
         int row = 0;
+        switch (days.get(0).getDayOfWeek()){
+            case SUNDAY -> col = 0;
+            case MONDAY -> col = 1;
+            case TUESDAY -> col = 2;
+            case WEDNESDAY -> col = 3;
+            case THURSDAY -> col = 4;
+            case FRIDAY -> col = 5;
+            case SATURDAY -> col = 6;
+        }
 
         for (LocalDate day : days) {
             Text dayText = new Text(String.valueOf(day.getDayOfMonth()));
