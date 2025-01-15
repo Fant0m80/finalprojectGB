@@ -5,6 +5,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.DatePicker;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.RowConstraints;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -15,16 +16,13 @@ import java.util.List;
 
 public class CalendarController {
     @FXML
-    private AnchorPane AnchorPane_Calendar;
+    private GridPane GridPane_Calendar;
 
     @FXML
     protected void initialize(){
-    GridPane calendarGrid = new GridPane();
-    VBox vbox = new VBox(calendarGrid);
-    AnchorPane_Calendar.getChildren().add(vbox);
     LocalDate selectedDate = LocalDate.now();
     List<LocalDate> daysInMonth = getDaysInMonth(selectedDate);
-    updateCalendarGrid(calendarGrid, daysInMonth);
+    updateCalendarGrid(GridPane_Calendar, daysInMonth);
 
     }
 
@@ -40,8 +38,9 @@ public class CalendarController {
 
     private void updateCalendarGrid(GridPane grid, List<LocalDate> days) {
         grid.getChildren().clear();
-        int row = 0;
         int col = 0;
+        int row = 0;
+
         for (LocalDate day : days) {
             Text dayText = new Text(String.valueOf(day.getDayOfMonth()));
             grid.add(dayText, col, row);

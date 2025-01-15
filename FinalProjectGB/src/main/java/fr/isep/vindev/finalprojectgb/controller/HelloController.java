@@ -179,7 +179,7 @@ public class HelloController {
     @FXML
     protected void onButton_CalendarViewClick() throws IOException{
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("CalendarApp.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 600, 400);
+        Scene scene = new Scene(fxmlLoader.load(), 800, 800);
 
         Stage newstage = new Stage();
         newstage.setTitle("Calendrier");
