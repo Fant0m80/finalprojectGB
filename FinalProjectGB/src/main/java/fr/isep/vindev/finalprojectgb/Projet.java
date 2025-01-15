@@ -124,8 +124,8 @@ public class Projet {
 
     public static void tacheParNom(String nomTache, String nomDuProjet){
         projetParNom(nomDuProjet);
-        for (Tache tache : projetSelectionnee.listeDesTaches){
-            if (nomTache.equals(tache.getNomTache())){
+        for (Tache tache : projetSelectionnee.getListeDesTaches()){
+            if (tache.getNomTache() == nomTache){
                 Tache.tacheSelectionnee.setNomTache(nomTache);
                 Tache.tacheSelectionnee.setCategorie(tache.getCategorie());
                 Tache.tacheSelectionnee.setDeadline(tache.getDeadline());
