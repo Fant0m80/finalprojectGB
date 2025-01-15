@@ -1,5 +1,6 @@
 package fr.isep.vindev.finalprojectgb.controller;
 
+import fr.isep.vindev.finalprojectgb.Projet;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -31,9 +32,15 @@ public class CalendarController {
 
     private LocalDate firstDayOfMonth = LocalDate.now().withDayOfMonth(1);
 
+    private List<Projet> projets = new ArrayList<>();
+
     @FXML
     protected void initialize(){
         updateCalendar();
+    }
+
+    public void setProjets(List<Projet> projets) {
+        this.projets = projets;
     }
 
     private List<LocalDate> getDaysInMonth(LocalDate date) {
@@ -64,15 +71,40 @@ public class CalendarController {
 
         Label_MonthYear.setText(days.get(0).getMonth().toString() + " " + days.get(0).getYear());
 
+        ArrayList<Projet> projetsInMonth = new ArrayList<>();
+        ArrayList<Projet> projetsInDay = new ArrayList<>();
+
+        for (Projet projet : projets) {
+            if (projet.getDeadline().getMonth() == days.get(0).getMonth() && projet.getDeadline().getYear() == days.get(0).getYear()) {
+                projetsInMonth.add(projet);
+            }
+        }
         for (LocalDate day : days) {
             Text dayText = new Text(String.valueOf(day.getDayOfMonth()));
-            grid.add(dayText, col, row);
+            for (Projet projet : projetsInMonth) {
+                if (projet.getDeadline().getDayOfMonth() == day.getDayOfMonth()) {
+                    projetsInDay.add(projet);
+                }
+            }
+
+            VBox vbox = new VBox();
+            vbox.getChildren().add(dayText);
+            for (Projet projet : projetsInDay) {
+                Button projetButton = new Button();
+                projetButton.setText(projet.getNomDuProjet());
+                vbox.getChildren().add(projetButton);
+            }
+
+            grid.add(vbox, col, row);
+
             col++;
             if (col == 7) {
                 col = 0;
                 row++;
             }
+            projetsInDay.clear();
         }
+        projetsInMonth.clear();
     }
 
     private void updateCalendar() {
@@ -98,4 +130,5 @@ public class CalendarController {
         updateCalendar();
         Label_MonthYear.setText(firstDayOfMonth.getMonth().toString() + " " + firstDayOfMonth.getYear());
     }
+
 }

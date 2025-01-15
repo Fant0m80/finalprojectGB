@@ -8,17 +8,11 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.VBox;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.List;
 
 public class HelloController {
     @FXML
@@ -177,17 +171,29 @@ public class HelloController {
     }
 
     @FXML
-    protected void onButton_CalendarViewClick() throws IOException{
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("CalendarApp.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 800, 800);
+    protected void onButton_CalendarViewClick() throws IOException {
+        if (ChoiceBox_Employe.getValue() != null) {
+            FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("CalendarApp.fxml"));
+            Scene scene = new Scene(fxmlLoader.load(), 800, 800);
 
-        Stage newstage = new Stage();
-        newstage.setTitle("Calendrier");
-        newstage.setScene(scene);
+            Employe selectedEmploye = ChoiceBox_Employe.getValue();
+            if (selectedEmploye != null) {
+                ArrayList<Projet> listeProjets = selectedEmploye.getListeProjet();
+                CalendarController calendarController = fxmlLoader.getController();
+                calendarController.setProjets(listeProjets);
+            }
 
-        newstage.show();
+            Stage newstage = new Stage();
+            newstage.setTitle("Calendrier");
+            newstage.setScene(scene);
 
-        Label_Erreur.setVisible(false);
+            newstage.show();
+
+            Label_Erreur.setVisible(false);
+        }
+        else{
+            Label_Erreur.setVisible(true);
+        }
     }
 
 
