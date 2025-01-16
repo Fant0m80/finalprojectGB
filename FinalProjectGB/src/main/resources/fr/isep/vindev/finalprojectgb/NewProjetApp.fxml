@@ -5,6 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.shape.*?>
 
+<?import javafx.scene.Cursor?>
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.isep.vindev.finalprojectgb.controller.NewProjetController">
    <children>
       <Polygon fill="#21e42b" layoutX="50.0" layoutY="358.0" nodeOrientation="LEFT_TO_RIGHT" points="-49.999996185302734, 42.0, 50.79999542236328, 42.0, -50.00000762939453, -358.0" stroke="#21e42b" strokeType="INSIDE" />
@@ -23,7 +24,10 @@
                               <Insets right="20.0" />
                            </HBox.margin>
                         </Label>
-                        <TextField fx:id="TextField_NomProjet" />
+                        <TextField fx:id="TextField_NomProjet" >
+                           <cursor>
+                              <Cursor fx:constant="TEXT" />
+                           </cursor></TextField>
                      </children>
                   </HBox>
                   <HBox prefHeight="100.0" prefWidth="200.0">
@@ -33,7 +37,10 @@
                               <Insets right="27.0" />
                            </HBox.margin>
                         </Label>
-                        <TextField fx:id="TextField_BudgetProjet" />
+                        <TextField fx:id="TextField_BudgetProjet" >
+                           <cursor>
+                              <Cursor fx:constant="TEXT" />
+                           </cursor></TextField>
                      </children>
                   </HBox>
                   <HBox prefHeight="100.0" prefWidth="200.0">
@@ -43,7 +50,10 @@
                               <Insets right="25.0" />
                            </padding>
                         </Label>
-                        <DatePicker fx:id="LocalDate_Deadline" />
+                        <DatePicker fx:id="LocalDate_Deadline" >
+                           <cursor>
+                              <Cursor fx:constant="TEXT" />
+                           </cursor></DatePicker>
                      </children>
                   </HBox>
                </children>
@@ -55,11 +65,17 @@
                <children>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <Button fx:id="Button_CreationProjet" mnemonicParsing="false" onAction="#onButton_CreationProjetClick" text="Créer" />
+                        <Button fx:id="Button_CreationProjet" mnemonicParsing="false" onAction="#onButton_CreationProjetClick" text="Créer" >
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor></Button>
                         <Button fx:id="Button_ModificationProjet" mnemonicParsing="false" onAction="#onButton_ModificationProjetClick" text="Modifier">
                            <HBox.margin>
                               <Insets left="20.0" />
                            </HBox.margin>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
                         </Button>
                      </children>
                      <VBox.margin>

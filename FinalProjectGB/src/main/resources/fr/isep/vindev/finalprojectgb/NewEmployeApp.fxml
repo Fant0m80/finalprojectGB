@@ -5,6 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.shape.*?>
 
+<?import javafx.scene.Cursor?>
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.isep.vindev.finalprojectgb.controller.NewEmployeController">
    <children>
       <Polygon fill="#21e42b" layoutX="50.0" layoutY="358.0" nodeOrientation="LEFT_TO_RIGHT" points="-49.999996185302734, 42.0, 50.79999542236328, 42.0, -50.00000762939453, -358.0" stroke="#21e42b" strokeType="INSIDE" />
@@ -24,10 +25,22 @@
             </VBox>
             <VBox prefHeight="200.0" prefWidth="100.0" spacing="15.0">
                <children>
-                  <TextField fx:id="TextField_Name" />
-                  <TextField fx:id="TextField_Firstname" />
-                  <TextField fx:id="TextField_Email" />
-                  <TextField fx:id="TextField_Tel" />
+                  <TextField fx:id="TextField_Name" >
+                     <cursor>
+                        <Cursor fx:constant="TEXT" />
+                     </cursor></TextField>
+                  <TextField fx:id="TextField_Firstname" >
+                     <cursor>
+                        <Cursor fx:constant="TEXT" />
+                     </cursor></TextField>
+                  <TextField fx:id="TextField_Email" >
+                     <cursor>
+                        <Cursor fx:constant="TEXT" />
+                     </cursor></TextField>
+                  <TextField fx:id="TextField_Tel" >
+                     <cursor>
+                        <Cursor fx:constant="TEXT" />
+                     </cursor></TextField>
                </children>
                <padding>
                   <Insets left="5.0" top="2.0" />
@@ -35,6 +48,9 @@
             </VBox>
          </children>
       </HBox>
-      <Button fx:id="Button_CreateEmploye" layoutX="250.0" layoutY="295.0" mnemonicParsing="false" onAction="#onButton_CreateEmployeClick" textAlignment="CENTER" />
+      <Button fx:id="Button_CreateEmploye" layoutX="250.0" layoutY="295.0" mnemonicParsing="false" onAction="#onButton_CreateEmployeClick" textAlignment="CENTER" >
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
    </children>
 </AnchorPane>

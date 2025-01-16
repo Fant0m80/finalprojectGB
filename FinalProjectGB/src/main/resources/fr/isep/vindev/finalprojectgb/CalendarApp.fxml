@@ -5,6 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
+<?import javafx.scene.Cursor?>
 <AnchorPane fx:id="AnchorPane_Calendar" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.isep.vindev.finalprojectgb.controller.CalendarController">
    <children>
       <VBox id="VBox_Calendar" fx:id="VBox_Calendar" alignment="CENTER" spacing="20.0">
@@ -16,9 +17,17 @@
             </Label>
             <HBox alignment="CENTER" fillHeight="false" prefHeight="54.0" prefWidth="700.0" spacing="30.0">
                <children>
-                  <Button id="Button_PreviousMonth" fx:id="Button_PreviousMonth" mnemonicParsing="false" onAction="#onButton_PreviousMonthClick" text="Previous" />
+                  <Button id="Button_PreviousMonth" fx:id="Button_PreviousMonth" mnemonicParsing="false" onAction="#onButton_PreviousMonthClick" text="Previous" >
+                      <cursor>
+                          <Cursor fx:constant="HAND" />
+                      </cursor>
+                  </Button>>
                   <Label id="Label_MonthYear" fx:id="Label_MonthYear" text="Month-Year" textAlignment="CENTER" />
-                  <Button id="Button_NextMonth" fx:id="Button_NextMonth" mnemonicParsing="false" onAction="#onButton_NextMonthClick" text="Next" />
+                  <Button id="Button_NextMonth" fx:id="Button_NextMonth" mnemonicParsing="false" onAction="#onButton_NextMonthClick" text="Next" >
+                      <cursor>
+                          <Cursor fx:constant="HAND" />
+                      </cursor>
+                  </Button>>
                </children>
             </HBox>
             <GridPane id="GridPane_DayName" fx:id="GridPane_DayName" alignment="CENTER">

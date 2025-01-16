@@ -6,6 +6,7 @@
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
+<?import javafx.scene.Cursor?>
 <AnchorPane id="AnchorPane_Parent" fx:id="AnchorPane_Parent" prefHeight="400.0" prefWidth="600.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.isep.vindev.finalprojectgb.controller.ProjetController">
    <children>
       <Polygon fill="#21e42b" layoutX="50.0" layoutY="358.0" nodeOrientation="LEFT_TO_RIGHT" points="-49.999996185302734, 42.0, 50.79999542236328, 42.0, -50.00000762939453, -358.0" stroke="#21e42b" strokeType="INSIDE" />
@@ -23,7 +24,11 @@
                                        <TextField fx:id="TextField_CreationTache">
                                            <HBox.margin>
                                                <Insets left="18.0" />
-                                           </HBox.margin></TextField>
+                                           </HBox.margin>
+                                           <cursor>
+                                               <Cursor fx:constant="TEXT" />
+                                           </cursor>
+                                       </TextField>
                                    </children>
                                </HBox>
                                <HBox prefHeight="30.0" prefWidth="463.0">
@@ -32,7 +37,11 @@
                                        <TextField fx:id="TextField_Categorie">
                                            <HBox.margin>
                                                <Insets left="54.0" />
-                                           </HBox.margin></TextField>
+                                           </HBox.margin>
+                                           <cursor>
+                                               <Cursor fx:constant="TEXT" />
+                                           </cursor>
+                                       </TextField>
                                    </children>
                                </HBox>
                                <HBox prefHeight="30.0" prefWidth="464.0">
@@ -41,7 +50,11 @@
                                        <DatePicker fx:id="DatePicker_Deadline">
                                            <HBox.margin>
                                                <Insets left="33.0" />
-                                           </HBox.margin></DatePicker>
+                                           </HBox.margin>
+                                           <cursor>
+                                               <Cursor fx:constant="TEXT" />
+                                           </cursor>
+                                       </DatePicker>
                                    </children>
                                </HBox>
                                <HBox prefHeight="30.0" prefWidth="466.0">
@@ -50,13 +63,19 @@
                                        <TextField fx:id="TextField_Priorite">
                                            <HBox.margin>
                                                <Insets left="15.0" />
-                                           </HBox.margin></TextField>
+                                           </HBox.margin>
+                                           <cursor>
+                                               <Cursor fx:constant="TEXT" />
+                                           </cursor></TextField>
                                    </children>
                                </HBox>
                                <HBox prefHeight="50.0" prefWidth="480.0">
                                    <children>
                                        <Label text="Description :" />
-                                       <TextArea fx:id="TextArea_Description" prefHeight="43.0" prefWidth="364.0" />
+                                       <TextArea fx:id="TextArea_Description" prefHeight="43.0" prefWidth="364.0" >
+                                           <cursor>
+                                               <Cursor fx:constant="TEXT" />
+                                           </cursor></TextArea>
                                    </children>
                                </HBox>
                         <HBox prefHeight="100.0" prefWidth="200.0">
@@ -65,11 +84,17 @@
                                  <HBox.margin>
                                     <Insets left="100.0" />
                                  </HBox.margin>
+                                 <cursor>
+                                     <Cursor fx:constant="HAND" />
+                                 </cursor>
                               </Button>
                               <Button fx:id="Button_ModifierTache" mnemonicParsing="false" onAction="#onButton_ModifierTacheClick" text="Modifier">
                                  <HBox.margin>
                                     <Insets left="10.0" />
                                  </HBox.margin>
+                                  <cursor>
+                                      <Cursor fx:constant="HAND" />
+                                  </cursor>
                               </Button>
                            </children>
                         </HBox>
