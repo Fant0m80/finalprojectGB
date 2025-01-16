@@ -21,13 +21,13 @@
                       <cursor>
                           <Cursor fx:constant="HAND" />
                       </cursor>
-                  </Button>>
+                  </Button>
                   <Label id="Label_MonthYear" fx:id="Label_MonthYear" text="Month-Year" textAlignment="CENTER" />
                   <Button id="Button_NextMonth" fx:id="Button_NextMonth" mnemonicParsing="false" onAction="#onButton_NextMonthClick" text="Next" >
                       <cursor>
                           <Cursor fx:constant="HAND" />
                       </cursor>
-                  </Button>>
+                  </Button>
                </children>
             </HBox>
             <GridPane id="GridPane_DayName" fx:id="GridPane_DayName" alignment="CENTER">

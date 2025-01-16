@@ -74,7 +74,8 @@
                      </HBox.margin>
                      <cursor>
                         <Cursor fx:constant="HAND" />
-                     </cursor></ChoiceBox>
+                     </cursor>
+                  </ChoiceBox>
                   <Button fx:id="Button_Employe" mnemonicParsing="false" onAction="#onButton_EmployeClick" text="Voir">
                   <HBox.margin>
                      <Insets right="20.0" />
@@ -127,7 +128,8 @@
                      </HBox.margin>
                      <cursor>
                         <Cursor fx:constant="HAND" />
-                     </cursor></Button>
+                     </cursor>
+                  </Button>
                </children>
             </HBox>
             <Label fx:id="Label_Erreur" text="Une case n'est pas remplie !" textFill="#f40303">
