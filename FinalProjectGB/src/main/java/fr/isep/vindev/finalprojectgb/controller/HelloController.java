@@ -171,6 +171,31 @@ public class HelloController {
     }
 
     @FXML
+    protected void onButton_SupprimerEmployeClick() throws IOException{
+        if (ChoiceBox_Employe.getValue() != null){
+            ChoiceBox_Employe.getValue().supprimerEmploye();
+            ChoiceBox_Employe.setValue(null);
+        }
+    }
+
+    @FXML
+    protected void onButton_ModifierEmployeClick() throws IOException{
+        Projet.projetParNom(ChoiceBox_Projet.getValue().getNomDuProjet());
+
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("NewEmployeApp.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 600, 400);
+
+        Stage newstage = new Stage();
+        newstage.setTitle("Modification d'un Employe");
+        newstage.setScene(scene);
+
+        newstage.show();
+
+        ChoiceBox_Employe.getItems().clear();
+        Label_Erreur.setVisible(false);
+    }
+
+    @FXML
     protected void onButton_CalendarViewClick() throws IOException {
         if (ChoiceBox_Employe.getValue() != null) {
             FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("CalendarApp.fxml"));

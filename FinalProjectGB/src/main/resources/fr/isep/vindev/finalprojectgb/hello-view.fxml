@@ -63,11 +63,11 @@
                   <HBox.margin>
                      <Insets right="20.0" />
                   </HBox.margin></Button>
-                  <Button fx:id="Button_SupprimerEmploye" mnemonicParsing="false" text="Supprimer">
+                  <Button fx:id="Button_SupprimerEmploye" mnemonicParsing="false" onAction="#onButton_SupprimerEmployeClick" text="Supprimer">
                      <HBox.margin>
                         <Insets right="20.0" />
                      </HBox.margin></Button>
-                  <Button fx:id="Button_ModifierEmploye" mnemonicParsing="false" text="Modifier">
+                  <Button fx:id="Button_ModifierEmploye" mnemonicParsing="false" onAction="#onButton_ModifierEmployeClick" text="Modifier">
                      <HBox.margin>
                         <Insets right="20.0" />
                      </HBox.margin></Button>
