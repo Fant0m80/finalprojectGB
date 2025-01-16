@@ -12,7 +12,7 @@ public class Employe {
     private ArrayList<Projet> listeProjet = new ArrayList<Projet>();
     private String[] role = new String[2];
     private ArrayList<Projet> historique = new ArrayList<Projet>();
-    private ArrayList<Tache> listeTache = new ArrayList<Tache>();
+    public ArrayList<Tache> listeTache = new ArrayList<Tache>();
 
     public static ArrayList<Employe> tousLesEmployes = new ArrayList<Employe>();
 

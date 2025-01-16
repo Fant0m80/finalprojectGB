@@ -75,6 +75,7 @@ public class Tache {
         for (int i = 0; i < this.projet.getListeDesMembres().size(); i++) {
             if (this.projet.getListeDesMembres().get(i).equals(employe)) {
                 this.listeMembres.add(employe);
+                employe.listeTache.add(this);
             }
         }
     }
@@ -83,6 +84,7 @@ public class Tache {
         for (int i = 0; i < this.listeMembres.size(); i++) {
             if (this.listeMembres.get(i).equals(employe)) {
                 this.listeMembres.remove(employe);
+                employe.listeTache.remove(this);
             }
         }
     }
@@ -90,6 +92,9 @@ public class Tache {
     public static void supprimerTache(String nomTache, Projet projet){
         for (Tache tache : projet.getListeDesTaches()){
             if (tache.getNomTache() == nomTache){
+                for (Employe employe : tache.getListeMembres()){
+                    employe.listeTache.remove(tache);
+                }
                 projet.getListeDesTaches().remove(tache);
             }
         }
