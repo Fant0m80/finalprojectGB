@@ -226,6 +226,7 @@ public class ProjetController {
                 Projet.projetSelectionnee.getListeDesTaches().add(newTache);
             }
         }
+
         Dialog_CreationTache.setVisible(false);
         Button_AjouterTache.setDisable(false);
         Button_ModifierTache.setVisible(true);
@@ -251,12 +252,16 @@ public class ProjetController {
 
                 if (TextField_CreationTache.getText( )!= null){
                     nomT = TextField_CreationTache.getText();
+
                 } if (DatePicker_Deadline.getValue() != null){
                     dateT = DatePicker_Deadline.getValue();
-                } if (TextField_Categorie.getText() != null){
-                    categoT = TextField_Categorie.getText();
+
+                } if (TextArea_Description.getText() != null){
+                    descripT = TextArea_Description.getText();
+
                 } if (TextField_Priorite.getText() != null){
                     prioT = Integer.parseInt(TextField_Priorite.getText());
+
                 } if (TextField_Categorie.getText() != null){
                     categoT = TextField_Categorie.getText();
                 }
