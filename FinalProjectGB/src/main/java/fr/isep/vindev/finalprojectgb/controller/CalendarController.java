@@ -37,6 +37,8 @@ public class CalendarController {
 
     private List<Projet> projets = new ArrayList<>();
 
+    private Projet projetselectionne;
+
     @FXML
     protected void initialize(){
         updateCalendar();
@@ -144,6 +146,7 @@ public class CalendarController {
 
     @FXML
     protected void onButton_ProjetClick(Projet projet) throws IOException {
+        Projet.projetSelectionnee = projet;
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("ProjetApp.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 600, 400);
 
