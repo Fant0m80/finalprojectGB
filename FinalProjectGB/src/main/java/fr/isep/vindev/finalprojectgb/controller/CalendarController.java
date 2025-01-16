@@ -37,8 +37,6 @@ public class CalendarController {
 
     private List<Projet> projets = new ArrayList<>();
 
-    private Projet projetselectionne;
-
     @FXML
     protected void initialize(){
         updateCalendar();
@@ -52,8 +50,8 @@ public class CalendarController {
         List<LocalDate> days = new ArrayList<>();
         LocalDate firstDay = date.withDayOfMonth(1);
         LocalDate lastDay = date.withDayOfMonth(date.lengthOfMonth());
-        for (LocalDate d = firstDay; !d.isAfter(lastDay); d = d.plusDays(1)) {
-            days.add(d);
+        for (LocalDate day = firstDay; !day.isAfter(lastDay); day = day.plusDays(1)) {
+            days.add(day);
         }
         return days;
     }
@@ -97,6 +95,7 @@ public class CalendarController {
             for (Projet projet : projetsInDay) {
                 Button projetButton = new Button();
                 projetButton.setText(projet.getNomDuProjet());
+                projetButton.setStyle("-fx-border-color: #d21a1a; -fx-padding: 5; -fx-alignment: center;");
                 projetButton.setUserData(projet);
                 projetButton.setOnAction(event -> {
                     try {
@@ -124,14 +123,11 @@ public class CalendarController {
         List<LocalDate> daysInMonth = getDaysInMonth(firstDayOfMonth);
         updateCalendarGrid(GridPane_Calendar, daysInMonth);
         Label_MonthYear.setText(firstDayOfMonth.getMonth().toString() + " " + firstDayOfMonth.getYear());
-        System.out.println("Calendar updated: " + firstDayOfMonth);
-
     }
 
     @FXML
     private void onButton_PreviousMonthClick() {
         firstDayOfMonth = firstDayOfMonth.minusMonths(1);
-        System.out.println("Previous month: " + firstDayOfMonth);
         updateCalendar();
         Label_MonthYear.setText(firstDayOfMonth.getMonth().toString() + " " + firstDayOfMonth.getYear());
     }
@@ -139,7 +135,6 @@ public class CalendarController {
     @FXML
     private void onButton_NextMonthClick() {
         firstDayOfMonth = firstDayOfMonth.plusMonths(1);
-        System.out.println("Next month: " + firstDayOfMonth);
         updateCalendar();
         Label_MonthYear.setText(firstDayOfMonth.getMonth().toString() + " " + firstDayOfMonth.getYear());
     }

@@ -12,6 +12,7 @@ public class Employe {
     private ArrayList<Projet> listeProjet = new ArrayList<Projet>();
     private String[] role = new String[2];
     private ArrayList<Projet> historique = new ArrayList<Projet>();
+    private ArrayList<Tache> listeTache = new ArrayList<Tache>();
 
     public static ArrayList<Employe> tousLesEmployes = new ArrayList<Employe>();
 
@@ -103,6 +104,16 @@ public class Employe {
     public void supprimerProjet(Projet projet) {
         this.listeProjet.remove(projet);
         this.addHistorique(projet);
+    }
+
+    public void supprimerEmploye(){
+        for (Tache tache : this.listeTache) {
+            tache.supprimerMembre(this);
+        }
+        for (Projet projet : this.listeProjet) {
+            projet.supprimerMembre(this);
+        }
+        tousLesEmployes.remove(this);
     }
 
     @Override
