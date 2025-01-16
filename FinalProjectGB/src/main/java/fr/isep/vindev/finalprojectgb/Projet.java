@@ -125,13 +125,15 @@ public class Projet {
     public static void tacheParNom(String nomTache, String nomDuProjet){
         for (Projet projet : tousLesProjets){
             if (projet.getNomDuProjet() == nomDuProjet){
+                System.out.println("Bon projet");
                 for (Tache tache : projet.getListeDesTaches()){
-                    if (tache.getNomTache() == nomTache){
+                    if (tache.getNomTache().equals(nomTache)){
                         Tache.tacheSelectionnee.setNomTache(nomTache);
                         Tache.tacheSelectionnee.setCategorie(tache.getCategorie());
                         Tache.tacheSelectionnee.setDeadline(tache.getDeadline());
                         Tache.tacheSelectionnee.setDescription(tache.getDescription());
                         Tache.tacheSelectionnee.setPriorite(tache.getPriorite());
+                        System.out.println(Tache.tacheSelectionnee.getNomTache() + Tache.tacheSelectionnee.getDeadline()+ Tache.tacheSelectionnee.getDescription());
                     }
                 }
             }

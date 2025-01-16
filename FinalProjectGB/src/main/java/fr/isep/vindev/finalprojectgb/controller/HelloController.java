@@ -92,7 +92,7 @@ public class HelloController {
     @FXML
     protected void onButton_CreerEmployeClick() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("NewEmployeApp.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 600, 500);
+        Scene scene = new Scene(fxmlLoader.load(), 600, 400);
 
         Stage newstage = new Stage();
         newstage.setTitle("Création d'un Employe");

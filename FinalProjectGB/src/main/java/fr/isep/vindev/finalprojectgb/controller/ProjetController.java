@@ -1,5 +1,6 @@
 package fr.isep.vindev.finalprojectgb.controller;
 
+import fr.isep.vindev.finalprojectgb.Employe;
 import fr.isep.vindev.finalprojectgb.Projet;
 import fr.isep.vindev.finalprojectgb.Tache;
 import javafx.fxml.FXML;
@@ -8,13 +9,16 @@ import javafx.geometry.Orientation;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseButton;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import javafx.stage.Popup;
 import javafx.stage.Stage;
 import org.controlsfx.control.tableview2.filter.filtereditor.SouthFilter;
 
 import java.io.IOException;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -141,7 +145,25 @@ public class ProjetController {
 
         MenuItem modifier = new MenuItem("Modifier");
         MenuItem supprimer = new MenuItem("Supprimer");
-        contextMenu.getItems().addAll(modifier,supprimer);
+        MenuItem ajouterMembre = new MenuItem("Ajouter un membre");
+        contextMenu.getItems().addAll(modifier,supprimer,ajouterMembre);
+
+        ajouterMembre.setOnAction(event ->{
+            for (Projet projet : Projet.tousLesProjets) {
+                if (Projet.projetSelectionnee.getNomDuProjet() == projet.getNomDuProjet()) {
+                    StackPane paneHaut2 = (StackPane) splitPane.getItems().get(0);
+
+                    Label labelNomTache2 = (Label) paneHaut2.getChildren().get(0);
+                    nomTacheselec = labelNomTache2.getText();
+                    Popup popup = popup(nomTacheselec);
+                    if (!popup.isShowing()) {
+                        popup.show(AnchorPane_Parent,500,300);
+                    } else {
+                        popup.hide();
+                    }
+                }
+            }
+        });
 
         modifier.setOnAction(event ->{
             for (Projet projet : Projet.tousLesProjets) {
@@ -204,7 +226,6 @@ public class ProjetController {
             if (event.getButton() == MouseButton.SECONDARY){
                 oldX = splitPane.localToScene(0, 0).getX();
                 oldY = splitPane.localToScene(0, 0).getY();
-                System.out.println("Le SplitPane est à : (" + oldX + ", " + oldY + ")");
                 contextMenu.show(splitPane, event.getScreenX(), event.getScreenY());
             }
         });
@@ -222,6 +243,7 @@ public class ProjetController {
                 Tache newTache = new Tache(TextField_CreationTache.getText(), projet,
                         DatePicker_Deadline.getValue(), TextField_Categorie.getText(),Integer.parseInt(TextField_Priorite.getText()),
                         TextArea_Description.getText());
+
                 projet.getListeDesTaches().add(newTache);
                 Projet.projetSelectionnee.getListeDesTaches().add(newTache);
             }
@@ -321,7 +343,25 @@ public class ProjetController {
 
         MenuItem modifier = new MenuItem("Modifier");
         MenuItem supprimer = new MenuItem("Supprimer");
-        contextMenu.getItems().addAll(modifier,supprimer);
+        MenuItem ajouterMembre = new MenuItem("Ajouter un membre");
+        contextMenu.getItems().addAll(modifier,supprimer,ajouterMembre);
+
+        ajouterMembre.setOnAction(event ->{
+            for (Projet projet : Projet.tousLesProjets) {
+                if (Projet.projetSelectionnee.getNomDuProjet() == projet.getNomDuProjet()) {
+                    StackPane paneHaut2 = (StackPane) splitPane.getItems().get(0);
+
+                    Label labelNomTache2 = (Label) paneHaut2.getChildren().get(0);
+                    nomTacheselec = labelNomTache2.getText();
+                    Popup popup = popup(nomTacheselec);
+                    if (!popup.isShowing()) {
+                        popup.show(anchorPaneparent,500,300);
+                    } else {
+                        popup.hide();
+                    }
+                }
+            }
+        });
 
         modifier.setOnAction(event ->{
             for (Projet projet : Projet.tousLesProjets) {
@@ -384,7 +424,6 @@ public class ProjetController {
             if (event.getButton() == MouseButton.SECONDARY){
                 oldX = splitPane.localToScene(0, 0).getX();
                 oldY = splitPane.localToScene(0, 0).getY();
-                System.out.println("Le SplitPane est à : (" + oldX + ", " + oldY + ")");
                 contextMenu.show(splitPane, event.getScreenX(), event.getScreenY());
             }
         });
@@ -392,5 +431,46 @@ public class ProjetController {
         if (!anchorPaneparent.getChildren().contains(splitPane)) {
             anchorPaneparent.getChildren().add(splitPane);
         }
+    }
+
+    public Popup popup(String nomdelaTache){
+        Popup popup = new Popup();
+
+        ChoiceBox<String> choiceBox = new ChoiceBox<>();
+        for (Employe employe : Employe.tousLesEmployes){
+            choiceBox.getItems().add(employe.getPrenom() + " " + employe.getNom());
+        }
+
+        Button popupButton = new Button("Ajouter à la tâche");
+        popupButton.setOnAction(e ->{
+            if (choiceBox.getValue() != null){
+                for (Projet projet : Projet.tousLesProjets){
+                    if (projet.getNomDuProjet() == Projet.projetSelectionnee.getNomDuProjet()){
+
+                        for (Tache tache : projet.getListeDesTaches()){
+                            if (tache.getNomTache().equals(nomdelaTache) ){
+
+                                for (Employe employe : Employe.tousLesEmployes){
+                                    if (choiceBox.getValue().equals(employe.getPrenom() + " " + employe.getNom()) ){
+                                        System.out.println(employe.getPrenom() + " " + employe.getNom() + " a été ajouté à la tâche");
+                                        if (!tache.getListeMembres().contains(employe)) {
+                                            tache.getListeMembres().add(employe);
+                                        }
+                                    }
+                                }
+
+                            }
+                        }
+                    }
+                }
+            }
+            popup.hide();
+        });
+
+        HBox popupContent = new HBox(10, choiceBox, popupButton);
+        popupContent.setStyle("-fx-background-color: white; -fx-padding: 10; -fx-border-color: black; -fx-border-width: 1;");
+
+        popup.getContent().add(popupContent);
+        return popup;
     }
 }
