@@ -92,11 +92,16 @@ public class Tache {
     public static void supprimerTache(String nomTache, Projet projet){
         for (Tache tache : projet.getListeDesTaches()){
             if (tache.getNomTache() == nomTache){
-                for (Employe employe : tache.getListeMembres()){
-                    employe.listeTache.remove(tache);
+                for (Employe employe : tache.getListeMembres()) {
+                    for (Tache tacheEmploye : employe.listeTache) {
+                        if (tacheEmploye.getNomTache() == nomTache) {
+                            employe.listeTache.remove(tacheEmploye);
+                        }
+                    }
                 }
-                projet.getListeDesTaches().remove(tache);
             }
+            projet.getListeDesTaches().remove(tache);
         }
     }
 }
+
