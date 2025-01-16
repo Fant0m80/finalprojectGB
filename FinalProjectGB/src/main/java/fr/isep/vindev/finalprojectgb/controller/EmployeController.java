@@ -1,14 +1,18 @@
 package fr.isep.vindev.finalprojectgb.controller;
 
 import fr.isep.vindev.finalprojectgb.Employe;
+import fr.isep.vindev.finalprojectgb.HelloApplication;
 import fr.isep.vindev.finalprojectgb.Projet;
 import javafx.fxml.FXML;
-import javafx.scene.Node;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.RowConstraints;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class EmployeController {
@@ -58,10 +62,31 @@ public class EmployeController {
             int row = currentCell / cols;
             int col = currentCell % cols;
 
-            Label projetLabel = new Label(projet.getNomDuProjet());
-            projetLabel.setStyle("-fx-border-color: #d21a1a; -fx-padding: 5; -fx-alignment: center;");
-            GridPane_listeProjet.add(projetLabel, col, row);
+            Button projetButton = new Button(projet.getNomDuProjet());
+            projetButton.setStyle("-fx-border-color: #d21a1a; -fx-padding: 5; -fx-alignment: center;");
+            projetButton.setUserData(projet);
+            projetButton.setOnAction(event -> {
+                try {
+                    onButton_ProjetClick(projet);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            });
+            GridPane_listeProjet.add(projetButton, col, row);
             currentCell++;
         }
+    }
+
+    @FXML
+    protected void onButton_ProjetClick(Projet projet) throws IOException {
+        Projet.projetSelectionnee = projet;
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("ProjetApp.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 600, 400);
+
+        Stage newstage = new Stage();
+        newstage.setTitle("Projet : " + projet.getNomDuProjet());
+        newstage.setScene(scene);
+
+        newstage.show();
     }
 }
