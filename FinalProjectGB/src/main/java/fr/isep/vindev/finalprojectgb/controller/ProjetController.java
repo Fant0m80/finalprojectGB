@@ -195,12 +195,21 @@ public class ProjetController {
                             Projet.tacheParNom(nomTacheselec,projet.getNomDuProjet());
                         }
                     }
+                    
+                    for (Tache tache : projet.getListeDesTaches()){
+                        System.out.println("Tache");
+                        if (tache.getNomTache().equals(labelNomTache2)){
+                            System.out.println("Oui");
+                            remplirTextfield(tache);
+                        }
+                    }
 
                     Tache.supprimerTache(labelNomTache2.getText(), projet);
                     Projet.projetSelectionnee.getListeDesTaches().remove(Tache.tacheSelectionnee);
 
                     AnchorPane_Parent.getChildren().remove(splitPane);
                     dictTacheToSplitPane.remove(Tache.tacheSelectionnee.getNomTache());
+
 
 
                     Button_CreationTache.setVisible(false);
@@ -216,6 +225,7 @@ public class ProjetController {
                     Dialog_CreationTache.toFront();
 
                     Button_AjouterTache.setDisable(false);
+
                 }
             }
         });
@@ -284,6 +294,7 @@ public class ProjetController {
                 creationSplitPane(TextField_CreationTache.getText(), TextField_Categorie.getText(),
                         DatePicker_Deadline.getValue(),TextField_Priorite.getText(), TextArea_Description.getText(),
                         oldX,oldY,parent);
+
                 String nomT = Tache.tacheSelectionnee.getNomTache();
                 LocalDate dateT = Tache.tacheSelectionnee.getDeadline();
                 String descripT = Tache.tacheSelectionnee.getDescription();
@@ -431,6 +442,11 @@ public class ProjetController {
                     Dialog_CreationTache.toFront();
 
                     Button_AjouterTache.setDisable(false);
+                    for (Tache tache : projet.getListeDesTaches()){
+                        if (tache.getNomTache().equals(labelNomTache2)){
+                            remplirTextfield(tache);
+                        }
+                    }
                 }
             }
         });
@@ -531,5 +547,13 @@ public class ProjetController {
 
         popup.getContent().add(agencement);
         return popup;
+    }
+
+    public void remplirTextfield(Tache tache){
+        DatePicker_Deadline.setValue(tache.getDeadline());
+        TextField_Categorie.setText(tache.getCategorie());
+        TextField_CreationTache.setText(tache.getNomTache());
+        TextArea_Description.setText(tache.getDescription());
+        TextField_Priorite.setText(String.valueOf(tache.getPriorite()));
     }
 }
