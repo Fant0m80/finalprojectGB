@@ -146,7 +146,25 @@ public class ProjetController {
         MenuItem modifier = new MenuItem("Modifier");
         MenuItem supprimer = new MenuItem("Supprimer");
         MenuItem ajouterMembre = new MenuItem("Ajouter un membre");
-        contextMenu.getItems().addAll(modifier,supprimer,ajouterMembre);
+        MenuItem voirListeMembre = new MenuItem("Voir la liste des employés sur cette tache");
+        contextMenu.getItems().addAll(modifier,supprimer,ajouterMembre,voirListeMembre);
+
+        voirListeMembre.setOnAction((event ->{
+            for (Projet projet : Projet.tousLesProjets) {
+                if (Projet.projetSelectionnee.getNomDuProjet() == projet.getNomDuProjet()) {
+                    StackPane paneHaut2 = (StackPane) splitPane.getItems().get(0);
+
+                    Label labelNomTache2 = (Label) paneHaut2.getChildren().get(0);
+                    nomTacheselec = labelNomTache2.getText();
+                    Popup popup = popupListeMembre(labelNomTache2.getText(),projet);
+                    if (!popup.isShowing()) {
+                        popup.show(AnchorPane_Parent,500,300);
+                    } else {
+                        popup.hide();
+                    }
+                }
+            }
+        }));
 
         ajouterMembre.setOnAction(event ->{
             for (Projet projet : Projet.tousLesProjets) {
@@ -344,7 +362,25 @@ public class ProjetController {
         MenuItem modifier = new MenuItem("Modifier");
         MenuItem supprimer = new MenuItem("Supprimer");
         MenuItem ajouterMembre = new MenuItem("Ajouter un membre");
-        contextMenu.getItems().addAll(modifier,supprimer,ajouterMembre);
+        MenuItem voirListeMembre = new MenuItem("Voir la liste des employés sur cette tache");
+        contextMenu.getItems().addAll(modifier,supprimer,ajouterMembre,voirListeMembre);
+
+        voirListeMembre.setOnAction((event ->{
+            for (Projet projet : Projet.tousLesProjets) {
+                if (Projet.projetSelectionnee.getNomDuProjet() == projet.getNomDuProjet()) {
+                    StackPane paneHaut2 = (StackPane) splitPane.getItems().get(0);
+
+                    Label labelNomTache2 = (Label) paneHaut2.getChildren().get(0);
+                    nomTacheselec = labelNomTache2.getText();
+                    Popup popup = popupListeMembre(labelNomTache2.getText(),projet);
+                    if (!popup.isShowing()) {
+                        popup.show(anchorPaneparent,500,300);
+                    } else {
+                        popup.hide();
+                    }
+                }
+            }
+        }));
 
         ajouterMembre.setOnAction(event ->{
             for (Projet projet : Projet.tousLesProjets) {
@@ -362,7 +398,6 @@ public class ProjetController {
                 }
             }
         });
-
         modifier.setOnAction(event ->{
             for (Projet projet : Projet.tousLesProjets) {
                 if (Projet.projetSelectionnee.getNomDuProjet() == projet.getNomDuProjet()) {
@@ -471,6 +506,30 @@ public class ProjetController {
         popupContent.setStyle("-fx-background-color: white; -fx-padding: 10; -fx-border-color: black; -fx-border-width: 1;");
 
         popup.getContent().add(popupContent);
+        return popup;
+    }
+
+    public Popup popupListeMembre(String nomdelaTach, Projet projet){
+        Popup popup = new Popup();
+
+        Label labelListe = new Label("Liste des employés sur cette tâche : ");
+        Button ferme = new Button("Fermé");
+        for (Tache tache : projet.getListeDesTaches()){
+            if (tache.getNomTache().equals(nomdelaTach)){
+                for (Employe employe : tache.getListeMembres()){
+                    labelListe.setText(labelListe.getText().concat(employe.getPrenom() + " " + employe.getNom() + ", "));
+                }
+            }
+        }
+
+        ferme.setOnAction(e->{
+          popup.hide();
+        });
+
+        VBox agencement = new VBox(labelListe,ferme);
+        agencement.setStyle("-fx-background-color: white; -fx-padding: 20; -fx-border-color: black; -fx-border-width: 1;");
+
+        popup.getContent().add(agencement);
         return popup;
     }
 }
