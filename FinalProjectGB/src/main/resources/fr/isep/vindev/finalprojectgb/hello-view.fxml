@@ -12,7 +12,22 @@
       <Polygon fill="#21e42b" layoutX="382.0" layoutY="155.0" nodeOrientation="LEFT_TO_RIGHT" points="118.39999389648438, -155.0, 218.0, 245.0, 218.199951171875, -155.0" stroke="#21e42b" strokeType="INSIDE" />
       <VBox prefHeight="400.0" prefWidth="600.0">
          <children>
-            <HBox prefHeight="100.0" prefWidth="200.0" />
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Label text="Projet Java GB" textAlignment="CENTER" underline="true">
+                     <font>
+                        <Font name="System Bold" size="24.0" />
+                     </font>
+                  </Label>
+               </children></HBox>
+            <Label text="Projet :" underline="true">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <padding>
+                  <Insets left="10.0" />
+               </padding>
+            </Label>
             <HBox prefHeight="100.0" prefWidth="200.0">
                <children>
                   <ChoiceBox fx:id="ChoiceBox_Projet" onMouseClicked="#onChoiceBox_ProjetClick" prefWidth="150.0">
@@ -33,21 +48,49 @@
                   <Insets />
                </VBox.margin>
             </HBox>
+            <Label text="Employe :" underline="true">
+               <padding>
+                  <Insets left="10.0" />
+               </padding>
+            </Label>
             <HBox prefHeight="100.0" prefWidth="200.0">
                <children>
                   <ChoiceBox fx:id="ChoiceBox_Employe" onMouseClicked="#onChoiceBox_EmployeClick" prefWidth="150.0">
                      <HBox.margin>
                         <Insets left="10.0" right="100.0" />
                      </HBox.margin></ChoiceBox>
-                  <Button fx:id="Button_Employe" mnemonicParsing="false" onAction="#onButton_EmployeClick" text="Voir" />
+                  <Button fx:id="Button_Employe" mnemonicParsing="false" onAction="#onButton_EmployeClick" text="Voir">
+                  <HBox.margin>
+                     <Insets right="20.0" />
+                  </HBox.margin></Button>
+                  <Button fx:id="Button_SupprimerEmploye" mnemonicParsing="false" text="Supprimer">
+                     <HBox.margin>
+                        <Insets right="20.0" />
+                     </HBox.margin></Button>
+                  <Button fx:id="Button_ModifierEmploye" mnemonicParsing="false" text="Modifier">
+                     <HBox.margin>
+                        <Insets right="20.0" />
+                     </HBox.margin></Button>
                </children>
             </HBox>
             <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="194.0">
                <children>
-                  <Button fx:id="Button_CreerProjet" mnemonicParsing="false" onAction="#onButton_CreerProjetClick" text="Nouveau Projet" />
-                  <Button fx:id="Button_CreerEmploye" mnemonicParsing="false" onAction="#onButton_CreerEmployeClick" text="Nouvel Employe" />
-                  <Button fx:id="Button_AddEmployeToProjet" mnemonicParsing="false" onAction="#onButton_AddEmployeToProjetClick" text="Ajouter l'employe au projet" />
-                  <Button fx:id="Button_CalendarView" mnemonicParsing="false" onAction="#onButton_CalendarViewClick" text="Voir calendrier" />
+                  <Button fx:id="Button_CreerProjet" mnemonicParsing="false" onAction="#onButton_CreerProjetClick" text="Nouveau Projet">
+                     <HBox.margin>
+                        <Insets right="20.0" />
+                     </HBox.margin></Button>
+                  <Button fx:id="Button_CreerEmploye" mnemonicParsing="false" onAction="#onButton_CreerEmployeClick" text="Nouvel Employe">
+                     <HBox.margin>
+                        <Insets right="20.0" />
+                     </HBox.margin></Button>
+                  <Button fx:id="Button_AddEmployeToProjet" mnemonicParsing="false" onAction="#onButton_AddEmployeToProjetClick" text="Ajouter l'employe au projet">
+                     <HBox.margin>
+                        <Insets right="20.0" />
+                     </HBox.margin></Button>
+                  <Button fx:id="Button_CalendarView" mnemonicParsing="false" onAction="#onButton_CalendarViewClick" text="Voir calendrier">
+                     <HBox.margin>
+                        <Insets right="20.0" />
+                     </HBox.margin></Button>
                </children>
             </HBox>
             <Label fx:id="Label_Erreur" text="Une case n'est pas remplie !" textFill="#f40303">
