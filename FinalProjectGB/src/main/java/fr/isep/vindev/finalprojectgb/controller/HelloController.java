@@ -3,6 +3,7 @@ package fr.isep.vindev.finalprojectgb.controller;
 import fr.isep.vindev.finalprojectgb.Employe;
 import fr.isep.vindev.finalprojectgb.HelloApplication;
 import fr.isep.vindev.finalprojectgb.Projet;
+import fr.isep.vindev.finalprojectgb.Tache;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -217,6 +218,8 @@ public class HelloController {
                 ArrayList<Projet> listeProjets = selectedEmploye.getListeProjet();
                 CalendarController calendarController = fxmlLoader.getController();
                 calendarController.setProjets(listeProjets);
+                ArrayList<Tache> listeTaches = selectedEmploye.getListeTache();
+                calendarController.setTaches(listeTaches);
             }
 
             Stage newstage = new Stage();

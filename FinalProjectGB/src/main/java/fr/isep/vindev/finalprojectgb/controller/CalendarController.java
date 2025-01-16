@@ -2,6 +2,7 @@ package fr.isep.vindev.finalprojectgb.controller;
 
 import fr.isep.vindev.finalprojectgb.HelloApplication;
 import fr.isep.vindev.finalprojectgb.Projet;
+import fr.isep.vindev.finalprojectgb.Tache;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -37,6 +38,8 @@ public class CalendarController {
 
     private List<Projet> projets = new ArrayList<>();
 
+    private List<Tache> taches = new ArrayList<>();
+
     @FXML
     protected void initialize(){
         updateCalendar();
@@ -44,6 +47,10 @@ public class CalendarController {
 
     public void setProjets(List<Projet> projets) {
         this.projets = projets;
+    }
+
+    public void setTaches(List<Tache> taches) {
+        this.taches = taches;
     }
 
     private List<LocalDate> getDaysInMonth(LocalDate date) {
@@ -76,17 +83,31 @@ public class CalendarController {
 
         ArrayList<Projet> projetsInMonth = new ArrayList<>();
         ArrayList<Projet> projetsInDay = new ArrayList<>();
+        ArrayList<Tache> tachesInMonth = new ArrayList<>();
+        ArrayList<Tache> tachesInDay = new ArrayList<>();
 
         for (Projet projet : projets) {
             if (projet.getDeadline().getMonth() == days.get(0).getMonth() && projet.getDeadline().getYear() == days.get(0).getYear()) {
                 projetsInMonth.add(projet);
             }
         }
+
+        for (Tache tache : taches) {
+            if (tache.getDeadline().getMonth() == days.get(0).getMonth() && tache.getDeadline().getYear() == days.get(0).getYear()) {
+                tachesInMonth.add(tache);
+            }
+        }
+
         for (LocalDate day : days) {
             Text dayText = new Text(String.valueOf(day.getDayOfMonth()));
             for (Projet projet : projetsInMonth) {
                 if (projet.getDeadline().getDayOfMonth() == day.getDayOfMonth()) {
                     projetsInDay.add(projet);
+                }
+            }
+            for (Tache tache : tachesInMonth) {
+                if (tache.getDeadline().getDayOfMonth() == day.getDayOfMonth()) {
+                    tachesInDay.add(tache);
                 }
             }
 
@@ -106,6 +127,20 @@ public class CalendarController {
                 });
                 vbox.getChildren().add(projetButton);
             }
+            for (Tache tache : tachesInDay) {
+                Button projetButton = new Button();
+                projetButton.setText(tache.getNomTache());
+                projetButton.setStyle("-fx-border-color: #1a7fd2; -fx-padding: 5; -fx-alignment: center;");
+                projetButton.setUserData(tache.getProjet());
+                projetButton.setOnAction(event -> {
+                    try {
+                        onButton_ProjetClick(tache.getProjet());
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                });
+                vbox.getChildren().add(projetButton);
+            }
 
             grid.add(vbox, col, row);
 
@@ -115,8 +150,10 @@ public class CalendarController {
                 row++;
             }
             projetsInDay.clear();
+            tachesInDay.clear();
         }
         projetsInMonth.clear();
+        tachesInMonth.clear();
     }
 
     private void updateCalendar() {

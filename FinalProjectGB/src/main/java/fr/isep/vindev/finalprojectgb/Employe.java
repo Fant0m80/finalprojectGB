@@ -48,6 +48,10 @@ public class Employe {
         return listeProjet;
     }
 
+    public ArrayList<Tache> getListeTache() {
+        return listeTache;
+    }
+
     public String getRole(int n) {
         return role[n];
     }

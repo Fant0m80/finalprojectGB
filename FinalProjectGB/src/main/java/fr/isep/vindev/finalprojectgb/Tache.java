@@ -67,6 +67,10 @@ public class Tache {
         return description;
     }
 
+    public Projet getProjet() {
+        return projet;
+    }
+
     public ArrayList<Employe> getListeMembres(){
         return listeMembres;
     }
