@@ -35,6 +35,6 @@
             </VBox>
          </children>
       </HBox>
-      <Button fx:id="Button_CreateEmploye" layoutX="250.0" layoutY="295.0" mnemonicParsing="false" onAction="#onButton_CreateEmployeClick" text="Create Employe" textAlignment="CENTER" />
+      <Button fx:id="Button_CreateEmploye" layoutX="250.0" layoutY="295.0" mnemonicParsing="false" onAction="#onButton_CreateEmployeClick" textAlignment="CENTER" />
    </children>
 </AnchorPane>

@@ -94,6 +94,9 @@ public class HelloController {
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("NewEmployeApp.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 600, 400);
 
+        NewEmployeController newEmployeController = fxmlLoader.getController();
+        newEmployeController.Button_CreateEmploye.setText("Creer");
+
         Stage newstage = new Stage();
         newstage.setTitle("Création d'un Employe");
         newstage.setScene(scene);
@@ -180,10 +183,18 @@ public class HelloController {
 
     @FXML
     protected void onButton_ModifierEmployeClick() throws IOException{
-        Projet.projetParNom(ChoiceBox_Projet.getValue().getNomDuProjet());
-
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("NewEmployeApp.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 600, 400);
+
+        NewEmployeController newEmployeController = fxmlLoader.getController();
+
+        newEmployeController.TextField_Name.setText(ChoiceBox_Employe.getValue().getNom());
+        newEmployeController.TextField_Firstname.setText(ChoiceBox_Employe.getValue().getPrenom());
+        newEmployeController.TextField_Email.setText(ChoiceBox_Employe.getValue().getEmail());
+        newEmployeController.TextField_Tel.setText(ChoiceBox_Employe.getValue().getTelephone());
+        newEmployeController.Button_CreateEmploye.setText("Modifier");
+
+        newEmployeController.selectedEmploye = ChoiceBox_Employe.getValue();
 
         Stage newstage = new Stage();
         newstage.setTitle("Modification d'un Employe");
