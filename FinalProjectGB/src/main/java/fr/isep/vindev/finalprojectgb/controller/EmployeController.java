@@ -64,21 +64,4 @@ public class EmployeController {
             currentCell++;
         }
     }
-
-
-
-    private boolean isCaseEmpty(GridPane grid, int row, int col) {
-        for (Node node : grid.getChildren()) {
-            Integer rowIndex = GridPane.getRowIndex(node);
-            Integer colIndex = GridPane.getColumnIndex(node);
-
-            rowIndex = (rowIndex == null) ? 0 : rowIndex;
-            colIndex = (colIndex == null) ? 0 : colIndex;
-
-            if (rowIndex == row && colIndex == col) {
-                return false;
-            }
-        }
-        return true;
-    }
 }
